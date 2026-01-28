@@ -38,7 +38,7 @@ const Hero = () => {
   }, [displayText, isDeleting, currentRoleIndex]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 md:pt-0">
       {/* Neural grid background */}
       <div className="absolute inset-0 neural-grid opacity-20" />
       
