@@ -47,35 +47,35 @@ const Hero = () => {
       
       <div className="container px-4 mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between animate-fade-in">
-          <div className="md:w-1/2 space-y-8 text-left">
+          <div className="md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left">
             {/* Badge */}
             <div className="inline-block">
-              <span className="px-4 py-2 rounded-full bg-green-500/20 text-green-400 border border-green-500/40 text-sm font-semibold flex items-center gap-2">
+              <span className="px-3 md:px-4 py-2 rounded-full bg-green-500/20 text-green-400 border border-green-500/40 text-xs md:text-sm font-semibold flex items-center gap-2">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                 Available for Opportunities
               </span>
             </div>
             
             {/* Main heading with enhanced glow */}
-            <h1 className="text-5xl md:text-7xl font-bold">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">
               Hi, I'm{" "}
               <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">Bhavya Mishra</span>
             </h1>
 
             {/* Typing Animation */}
-            <div className="text-xl md:text-2xl font-semibold h-8">
+            <div className="text-lg md:text-xl lg:text-2xl font-semibold h-7 md:h-8">
               <span className="text-cyan-400">{displayText}</span>
               <span className="animate-pulse text-cyan-400">|</span>
             </div>
             
-            <div className="inline-block bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-lg px-5 py-3 backdrop-blur-sm">
-              <p className="text-base text-foreground font-medium">
+            <div className="inline-block bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-lg px-4 md:px-5 py-2 md:py-3 backdrop-blur-sm">
+              <p className="text-sm md:text-base text-foreground font-medium">
                 🚀 Crafting modern web experiences with clean code & creative design
               </p>
             </div>
             
             {/* Enhanced CTA buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 pt-2 md:pt-4">
               <Button 
                 size="lg" 
                 className="bg-primary hover:bg-primary/90 neural-glow"
@@ -104,8 +104,8 @@ const Hero = () => {
 
           </div>
           
-          <div className="md:w-1/2 mt-8 md:mt-16">
-            <div className="relative w-full max-w-sm mx-auto mt-8">
+          <div className="md:w-1/2 mt-6 md:mt-16">
+            <div className="relative w-full max-w-[280px] sm:max-w-sm mx-auto mt-4 md:mt-8">
               {/* Enhanced glow effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary rounded-lg blur-2xl animate-pulse opacity-60"></div>
               <div className="absolute inset-0 neural-border rounded-lg"></div>

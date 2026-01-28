@@ -30,12 +30,12 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 px-4 bg-card/30 relative">
+    <section id="skills" className="py-16 md:py-24 px-4 bg-card/30 relative">
       <div className="absolute inset-0 neural-grid opacity-10" />
       
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="text-center mb-16 animate-slide-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-10 md:mb-16 animate-slide-up">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Core <span className="text-primary font-extrabold">Skills</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full pulse-glow" />
@@ -45,29 +45,29 @@ const Skills = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
           {skills.map((skill, index) => {
             const Icon = skill.icon;
             return (
               <Card 
                 key={index}
-                className="group p-8 neural-border card-3d relative overflow-hidden"
+                className="group p-5 md:p-8 neural-border card-3d relative overflow-hidden"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="absolute top-4 right-4 flex items-center gap-2">
                   <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
                 </div>
                 
-                <div className={`w-16 h-16 ${skill.bgColor} neural-border rounded-xl flex items-center justify-center mb-6 group-hover:neural-glow transition-all duration-300 relative`}>
-                  <Icon className={`w-8 h-8 ${skill.color} group-hover:scale-110 transition-transform duration-300`} />
+                <div className={`w-12 h-12 md:w-16 md:h-16 ${skill.bgColor} neural-border rounded-xl flex items-center justify-center mb-4 md:mb-6 group-hover:neural-glow transition-all duration-300 relative`}>
+                  <Icon className={`w-6 h-6 md:w-8 md:h-8 ${skill.color} group-hover:scale-110 transition-transform duration-300`} />
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-accent/10 rounded-xl" />
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-3 group-hover:neon-text transition-all duration-300">
+                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:neon-text transition-all duration-300">
                   {skill.title}
                 </h3>
                 
-                <p className="text-muted-foreground leading-relaxed text-sm mb-4">
+                <p className="text-muted-foreground leading-relaxed text-sm mb-3 md:mb-4">
                   {skill.description}
                 </p>
                 

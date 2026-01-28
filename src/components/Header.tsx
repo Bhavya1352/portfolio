@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Brain, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +13,17 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when resizing to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const navLinks = [
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
@@ -19,21 +31,25 @@ const Header = () => {
     { href: '#contact', label: 'Contact' },
   ];
 
+  const handleNavClick = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
+        isScrolled || isMobileMenuOpen
           ? 'neural-border backdrop-blur-md shadow-[0_8px_32px_rgba(0,255,255,0.1)]' 
           : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto max-w-6xl px-4">
-        <div className="flex justify-between items-center h-20">
-          <a href="#" className="text-2xl font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]">
+        <div className="flex justify-between items-center h-16 md:h-20">
+          <a href="#" className="text-xl md:text-2xl font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]">
             Bhavya Mishra
           </a>
           
-          {/* Enhanced navigation */}
+          {/* Desktop navigation */}
           <nav className="hidden md:flex gap-1">
             {navLinks.map((link, index) => (
               <a 
@@ -53,8 +69,40 @@ const Header = () => {
             ))}
           </nav>
           
-
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2 text-foreground hover:text-accent transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
         </div>
+        
+        {/* Mobile navigation menu */}
+        <nav 
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen ? 'max-h-64 pb-4' : 'max-h-0'
+          }`}
+        >
+          <div className="flex flex-col gap-2">
+            {navLinks.map((link, index) => (
+              <a 
+                key={link.href} 
+                href={link.href}
+                onClick={handleNavClick}
+                className="relative px-4 py-3 text-sm font-mono text-foreground hover:text-accent hover:bg-accent/10 rounded-lg transition-all duration-300"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </nav>
         
         {/* Connection line */}
         {isScrolled && (

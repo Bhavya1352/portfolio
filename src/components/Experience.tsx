@@ -35,10 +35,10 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24 px-4">
+    <section id="experience" className="py-16 md:py-24 px-4">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16 animate-slide-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-10 md:mb-16 animate-slide-up">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Professional <span className="text-gradient">Experience</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
@@ -48,24 +48,24 @@ const Experience = () => {
           </p>
         </div>
         
-        <div className="space-y-8">
+        <div className="space-y-4 md:space-y-8">
           {experiences.map((exp, index) => (
             <Card 
               key={index}
-              className="p-8 bg-card hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30 animate-slide-up"
+              className="p-5 md:p-8 bg-card hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30 animate-slide-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
+              <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <Briefcase className="w-7 h-7 text-primary" />
+                  <div className="w-12 h-12 md:w-14 md:h-14 bg-primary/10 rounded-xl flex items-center justify-center">
+                    <Briefcase className="w-6 h-6 md:w-7 md:h-7 text-primary" />
                   </div>
                 </div>
                 
-                <div className="flex-1 space-y-4">
+                <div className="flex-1 space-y-3 md:space-y-4">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-1">{exp.title}</h3>
-                    <p className="text-lg text-primary font-medium">{exp.organization}</p>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-1">{exp.title}</h3>
+                    <p className="text-base md:text-lg text-primary font-medium">{exp.organization}</p>
                   </div>
                   
                   <div className="flex items-center gap-2 text-muted-foreground">
