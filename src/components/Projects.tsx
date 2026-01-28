@@ -12,13 +12,13 @@ const projects = [
   {
     title: "Event Maker Site",
     description: "A comprehensive web platform designed to streamline event creation and management. It offers organizers tools for customizable event pages, attendee tracking, and secure payment processing, ensuring a seamless experience from setup to execution.",
-    link: "https://event-maker-site.vercel.app/",
+    link: "https://event-site-beta.vercel.app/",
     tech: ["React", "Node.js", "MongoDB"],
   },
   {
     title: "Mini Paint",
     description: "Vivid Sketchpad is a web-based drawing application enabling users to create freehand digital art. It offers a customizable canvas with adjustable brush sizes and colors, and the functionality to save creations as image files.",
-    link: "https://vivid-sketchpad.vercel.app/",
+    link: "https://paint-app-coral.vercel.app/",
     tech: ["Canvas API", "JavaScript", "HTML5"],
   },
 ];
