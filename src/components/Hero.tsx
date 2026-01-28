@@ -48,14 +48,6 @@ const Hero = () => {
       <div className="container px-4 mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between animate-fade-in">
           <div className="md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left">
-            {/* Badge */}
-            <div className="inline-block">
-              <span className="px-3 md:px-4 py-2 rounded-full bg-green-500/20 text-green-400 border border-green-500/40 text-xs md:text-sm font-semibold flex items-center gap-2">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                Available for Opportunities
-              </span>
-            </div>
-            
             {/* Main heading with enhanced glow */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">
               Hi, I'm{" "}
