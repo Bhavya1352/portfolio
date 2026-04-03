@@ -6,7 +6,7 @@ const experiences = [
   {
     title: "Software Developer Intern",
     organization: "Varak Welfare Society",
-    period: "November 2025 - Present",
+    period: "November 2025 - March 2026",
     description: "Developing and maintaining web applications, building responsive UI components and enhancing user experience.",
     tags: ["React", "Frontend Development", "Web Development"],
   },
