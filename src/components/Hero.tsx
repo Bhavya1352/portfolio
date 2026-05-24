@@ -96,8 +96,8 @@ const Hero = () => {
 
           </div>
           
-          <div className="md:w-1/2 mt-6 md:mt-16">
-            <div className="relative w-full max-w-[280px] sm:max-w-sm mx-auto mt-4 md:mt-8">
+          <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
+            <div className="relative w-full max-w-[280px] sm:max-w-xs md:max-w-sm lg:max-w-md mx-auto">
               {/* Enhanced glow effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary rounded-lg blur-2xl animate-pulse opacity-60"></div>
               <div className="absolute inset-0 neural-border rounded-lg"></div>

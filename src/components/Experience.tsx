@@ -4,7 +4,14 @@ import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    title: "Software Developer Intern",
+    title: "Frontend Intern",
+    organization: "Naya Growth",
+    period: "May 2026 - Present",
+    description: "Enhanced existing web pages by improving layout structure, responsiveness, and overall UI consistency. Developed reusable React components to maintain consistent and scalable frontend design. Worked closely with the team to implement new frontend features and improve user experience on different screen sizes.",
+    tags: ["React", "UI/UX", "Frontend", "Web Development"],
+  },
+  {
+    title: "Frontend Intern",
     organization: "Varak Welfare Society",
     period: "November 2025 - March 2026",
     description: "Developing and maintaining web applications, building responsive UI components and enhancing user experience.",
