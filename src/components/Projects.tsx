@@ -49,7 +49,7 @@ const projects = [
 
 const Projects = () => {
   const heading = useScrollReveal();
-  const cards = projects.map(() => useScrollReveal({ threshold: 0.05 }));
+  const cards = projects.map(() => useScrollReveal({ threshold: 0.01, rootMargin: '0px 0px 200px 0px' }));
   const scatterValues = useMemo(() => generateScatter(projects.length), []);
 
   return (
