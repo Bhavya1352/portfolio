@@ -42,7 +42,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
@@ -167,6 +167,18 @@
   .reveal-scale.visible {
     opacity: 1;
     transform: scale(1);
+  }
+
+  /* Scatter-to-grid animation for project cards */
+  .scatter-card {
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  .scatter-card.visible {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1) !important;
   }
 
   /* Hero background */

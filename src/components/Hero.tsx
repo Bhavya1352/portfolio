@@ -38,17 +38,17 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen overflow-x-hidden overflow-hidden hero-gradient-bg">
 
-      {/* Subtle dot-grid texture */}
-      <div className="absolute inset-0 hero-dot-grid opacity-30 pointer-events-none" />
-
-      {/* Abstract background image - subtle grid pattern */}
+      {/* Background image with blur */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px',
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[3px] scale-105"
+        style={{ backgroundImage: 'url(/hero-bg.avif)' }}
       />
+
+      {/* Light overlay for readability */}
+      <div className="absolute inset-0 bg-background/80 pointer-events-none" />
+
+      {/* Subtle dot-grid texture */}
+      <div className="absolute inset-0 hero-dot-grid opacity-20 pointer-events-none" />
 
       {/* Soft radial glow accents */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/[0.04] blur-[120px] pointer-events-none" />
@@ -84,23 +84,30 @@ const Hero = () => {
           <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-12 items-center">
 
             {/* Left — Headline */}
-            <div className="space-y-3 sm:space-y-5 order-2 md:order-1 text-center md:text-left min-w-0">
-              <h1 className="fade-up-stagger stagger-2 text-3xl leading-tight sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
-                <span className="text-foreground">Hi, I'm </span>
-                <span className="text-gradient">Bhavya Mishra</span>
+            <div className="space-y-2 sm:space-y-3 order-2 md:order-1 text-center md:text-left min-w-0">
+              <p className="fade-up-stagger stagger-1 text-sm sm:text-base text-muted-foreground font-medium tracking-wide">
+                Hi, I'm <span className="text-foreground font-semibold">Bhavya Mishra</span>
+              </p>
+
+              <h1 className="fade-up-stagger stagger-2 text-xl leading-tight sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight break-words">
+                <span className="text-foreground">Crafting thoughtful </span>
+                <span className="text-gradient">web experiences</span>
+                <br className="hidden sm:block" />
+                <span className="text-foreground">through code &amp; design.</span>
               </h1>
 
               <div className="fade-up-stagger stagger-3 flex items-center gap-3 justify-center md:justify-start min-w-0">
                 <div className="w-8 h-px bg-primary/50 flex-shrink-0" />
-                <p className="text-sm sm:text-lg font-medium text-primary tracking-wide truncate">
+                <p className="text-xs sm:text-base font-medium text-primary tracking-wide truncate">
                   {text}
                   <span className="animate-pulse ml-0.5 text-primary/60">|</span>
                 </p>
               </div>
 
-              <p className="fade-up-stagger stagger-4 text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed break-words px-2 sm:px-0">
-                Passionate about building clean, intuitive digital experiences
-                that connect users with meaningful content through modern web technologies.
+              <p className="fade-up-stagger stagger-4 text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed break-words px-2 sm:px-0 max-w-xl">
+                I build fast, accessible, and intuitive web applications with React, TypeScript,
+                and modern frontend technologies — focusing on performance, usability, and the
+                details that make products feel polished.
               </p>
 
               {/* CTA + availability badge */}
@@ -161,9 +168,9 @@ const Hero = () => {
               </span>
             ))}
           </div>
-          {/* Fade edges */}
-          <div className="absolute inset-y-0 left-0 w-10 sm:w-20 bg-background pointer-events-none z-10" />
-          <div className="absolute inset-y-0 right-0 w-10 sm:w-20 bg-background pointer-events-none z-10" />
+          {/* Fade edges - gradient blend */}
+          <div className="absolute inset-y-0 left-0 w-10 sm:w-20 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-y-0 right-0 w-10 sm:w-20 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
         </div>
 
         {/* Scroll hint */}

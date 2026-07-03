@@ -44,11 +44,11 @@ const Experience = () => {
         </div>
 
         {/* Timeline */}
-        <div className="relative border-l border-border/60 ml-1 sm:ml-2 space-y-8 sm:space-y-10 pl-6 sm:pl-8">
+        <div className="relative border-l border-border/60 ml-1 sm:ml-2 space-y-8 sm:space-y-10 pl-5 sm:pl-8">
           {experiences.map((exp, i) => (
             <div key={i} ref={items[i].ref} className={`relative reveal-card ${items[i].isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${i * 120}ms` }}>
               {/* Dot */}
-              <div className="absolute -left-[calc(1.5rem+5px)] sm:-left-[calc(2rem+5px)] top-1.5 w-2.5 h-2.5 rounded-full bg-primary/80 ring-4 ring-background" />
+              <div className="absolute -left-[calc(1.25rem+3px)] sm:-left-[calc(2rem+5px)] top-1.5 w-2.5 h-2.5 rounded-full bg-primary/80 ring-4 ring-background" />
 
               <div className="space-y-2">
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">

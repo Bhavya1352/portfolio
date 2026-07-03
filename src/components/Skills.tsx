@@ -11,7 +11,7 @@ const skillGroups = [
   },
   {
     title: "Tools & Platforms",
-    items: ["Git", "GitHub", "Vercel", "VS Code"],
+    items: ["Git", "GitHub", "Vercel", "Netlify", "VS Code"],
   },
   {
     title: "Concepts",
@@ -34,10 +34,10 @@ const Skills = () => {
           <div className="w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
           {skillGroups.map((group, i) => (
             <div key={group.title} ref={cards[i].ref} className={`min-w-0 reveal-card ${cards[i].isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${i * 100}ms` }}>
-              <h3 className="text-sm uppercase tracking-wider text-muted-foreground font-medium mb-3">
+              <h3 className="text-sm uppercase tracking-wider text-muted-foreground font-bold mb-3">
                 {group.title}
               </h3>
               <div className="flex flex-wrap gap-2">
