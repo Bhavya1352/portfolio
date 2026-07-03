@@ -41,11 +41,11 @@ const Hero = () => {
       {/* Background image with blur */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[3px] scale-105"
-        style={{ backgroundImage: 'url(/hero-bg.avif)' }}
+        style={{ backgroundImage: 'url(/hero-bg.avif)', opacity: 0.9 }}
       />
 
       {/* Light overlay for readability */}
-      <div className="absolute inset-0 bg-background/80 pointer-events-none" />
+      <div className="absolute inset-0 bg-background/40 pointer-events-none" />
 
       {/* Subtle dot-grid texture */}
       <div className="absolute inset-0 hero-dot-grid opacity-20 pointer-events-none" />
