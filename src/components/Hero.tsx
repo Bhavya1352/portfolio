@@ -40,15 +40,15 @@ const Hero = () => {
 
       {/* Background image — slight blur on desktop only */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:blur-[2px] scale-105"
-        style={{ backgroundImage: 'url(/hero-bg.avif)' }}
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat scale-105 opacity-100 brightness-125 saturate-110"
+        style={{ backgroundImage: 'url(/hero-screenshot-bg.png)' }}
       />
 
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-background/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/15 pointer-events-none" />
 
       {/* Subtle dot-grid texture */}
-      <div className="absolute inset-0 hero-dot-grid opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 hero-dot-grid opacity-5 pointer-events-none" />
 
       {/* Soft radial glow accents */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/[0.04] blur-[120px] pointer-events-none" />
