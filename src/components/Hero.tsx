@@ -38,14 +38,14 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen overflow-x-hidden overflow-hidden hero-gradient-bg">
 
-      {/* Background image with blur */}
+      {/* Background image — slight blur on desktop only */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[3px] scale-105"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:blur-[2px] scale-105"
         style={{ backgroundImage: 'url(/hero-bg.avif)' }}
       />
 
-      {/* Light overlay — lighter on mobile/tablet so image is clearly visible */}
-      <div className="absolute inset-0 bg-white/65 sm:bg-white/75 md:bg-white/85 pointer-events-none" />
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-background/60 pointer-events-none" />
 
       {/* Subtle dot-grid texture */}
       <div className="absolute inset-0 hero-dot-grid opacity-20 pointer-events-none" />
@@ -85,15 +85,15 @@ const Hero = () => {
 
             {/* Left — Headline */}
             <div className="space-y-2 sm:space-y-3 order-2 md:order-1 text-center md:text-left min-w-0">
-              <p className="fade-up-stagger stagger-1 text-sm sm:text-base text-muted-foreground font-medium tracking-wide">
-                Hi, I'm <span className="text-foreground font-semibold">Bhavya Mishra</span>
+              <p className="fade-up-stagger stagger-1 text-sm sm:text-base text-muted-foreground font-semibold tracking-wide">
+                Hi, I'm <span className="text-foreground font-bold">Bhavya Mishra</span>
               </p>
 
               <h1 className="fade-up-stagger stagger-2 text-xl leading-tight sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight break-words">
-                <span className="text-foreground">Crafting thoughtful </span>
-                <span className="text-gradient">web experiences</span>
+                <span className="text-foreground font-extrabold">Crafting thoughtful </span>
+                <span className="text-primary font-extrabold">web experiences</span>
                 <br className="hidden sm:block" />
-                <span className="text-foreground">through code &amp; design.</span>
+                <span className="text-foreground font-extrabold">through code &amp; design.</span>
               </h1>
 
               <div className="fade-up-stagger stagger-3 flex items-center gap-3 justify-center md:justify-start min-w-0">
@@ -104,7 +104,7 @@ const Hero = () => {
                 </p>
               </div>
 
-              <p className="fade-up-stagger stagger-4 text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed break-words px-2 sm:px-0 max-w-xl">
+              <p className="fade-up-stagger stagger-4 text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed break-words px-2 sm:px-0 max-w-xl font-medium">
                 I build fast, accessible, and intuitive web applications with React, TypeScript,
                 and modern frontend technologies — focusing on performance, usability, and the
                 details that make products feel polished.

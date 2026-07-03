@@ -72,7 +72,7 @@ const Projects = () => {
               ref={cards[i].ref}
               className={`group flex flex-col rounded-xl bg-background border border-border/60 hover:border-primary/40 hover-lift overflow-hidden ${cards[i].isVisible ? 'visible' : 'scatter-card'}`}
               style={{
-                transitionDelay: `${i * 60}ms`,
+                transitionDelay: `${i * 30}ms`,
                 ...(cards[i].isVisible ? {} : {
                   transform: `translate(${scatter.x}px, ${scatter.y}px) rotate(${scatter.rotate}deg) scale(${scatter.scale})`,
                   opacity: 0,
