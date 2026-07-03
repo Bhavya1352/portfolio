@@ -1,96 +1,83 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Zap } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const projects = [
   {
     title: "Quiz App",
-    description: "A fun and interactive quiz application built with React. Test your knowledge on a variety of topics with this engaging and responsive web app.",
+    description:
+      "Interactive quiz application with topic-based questions, score tracking, and a clean responsive interface.",
     link: "https://quiz-app-delta-pearl-16.vercel.app/",
     tech: ["React", "JavaScript", "CSS3"],
   },
   {
-    title: "Event Maker Site",
-    description: "A comprehensive web platform designed to streamline event creation and management. It offers organizers tools for customizable event pages, attendee tracking, and secure payment processing, ensuring a seamless experience from setup to execution.",
+    title: "Event Maker",
+    description:
+      "Platform for creating and managing events with customizable pages, attendee tracking, and payment integration.",
     link: "https://event-site-beta.vercel.app/",
     tech: ["React", "Node.js", "MongoDB"],
   },
   {
     title: "Mini Paint",
-    description: "Vivid Sketchpad is a web-based drawing application enabling users to create freehand digital art. It offers a customizable canvas with adjustable brush sizes and colors, and the functionality to save creations as image files.",
+    description:
+      "Browser-based drawing tool with adjustable brush sizes, color picker, and the ability to save artwork as images.",
     link: "https://paint-app-coral.vercel.app/",
     tech: ["Canvas API", "JavaScript", "HTML5"],
   },
 ];
 
 const Projects = () => {
+  const heading = useScrollReveal();
+  const cards = projects.map(() => useScrollReveal({ threshold: 0.1 }));
+
   return (
-    <section id="projects" className="py-16 md:py-24 px-4 relative">
-      <div className="absolute inset-0 neural-grid opacity-30" />
-      
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="text-center mb-10 md:mb-16 animate-slide-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            My <span className="text-primary font-extrabold">Projects</span>
+    <section id="projects" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-card/40">
+      <div className="container mx-auto max-w-5xl">
+        {/* Heading */}
+        <div ref={heading.ref} className={`mb-8 md:mb-12 reveal-card ${heading.isVisible ? 'visible' : ''}`}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+            Featured <span className="text-gradient">Projects</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full pulse-glow" />
+          <div className="w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
         </div>
-        
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-          {projects.map((project, index) => (
-            <Card 
-              key={index} 
-              className="group p-4 md:p-6 neural-border card-3d flex flex-col relative overflow-hidden"
-              style={{
-                animationDelay: `${index * 0.2}s`
-              }}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, i) => (
+            <div
+              key={project.title}
+              ref={cards[i].ref}
+              className={`group flex flex-col p-6 rounded-xl bg-background border border-border/60 hover:border-primary/40 hover-lift reveal-scale ${cards[i].isVisible ? 'visible' : ''}`}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-accent/20 to-transparent" />
-              <div className="absolute top-2 right-2 w-2 h-2 bg-accent rounded-full animate-pulse" />
-              
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 w-fit">
-                  <Zap className="w-5 h-5 text-primary" />
-                </div>
-                <div className="flex gap-1">
-                  {project.tech.slice(0, 2).map((tech, i) => (
-                    <span key={i} className="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-primary group-hover:neon-text transition-all duration-300">
-                {project.title}
-              </h3>
-              
-              <p className="text-muted-foreground flex-grow text-sm leading-relaxed">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-1 mt-4 mb-4">
-                {project.tech.map((tech, i) => (
-                  <span key={i} className="text-xs px-2 py-1 rounded bg-muted/50 text-muted-foreground">
-                    {tech}
+              {/* Tech chips */}
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs px-2 py-0.5 rounded-md bg-primary/10 text-primary font-medium"
+                  >
+                    {t}
                   </span>
                 ))}
               </div>
-              
-              <div className="mt-auto">
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  <Button 
-                    variant="outline" 
-                    className="w-full neural-border hover:neural-glow group-hover:scale-105 transition-all duration-300"
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    View Project
-                  </Button>
-                </a>
-              </div>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            </Card>
+
+              <h3 className="text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
+
+              <p className="text-sm text-muted-foreground leading-relaxed flex-grow mb-5">
+                {project.description}
+              </p>
+
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+              >
+                View Project
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
           ))}
         </div>
       </div>

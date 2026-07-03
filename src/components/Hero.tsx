@@ -1,133 +1,139 @@
-import { Button } from "@/components/ui/button";
-import { Mail, Linkedin } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
-const roles = [
-  "Web Developer",
-  "Open Source Enthusiast", 
-  "Frontend Developer",
-  "Tech Explorer"
+const techStack = [
+  "React", "TypeScript", "JavaScript", "Tailwind CSS",
+  "Next.js", "Node.js", "Git", "HTML5", "CSS3", "Vercel",
 ];
 
 const Hero = () => {
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentRole = roles[currentRoleIndex];
-    
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayText.length < currentRole.length) {
-          setDisplayText(currentRole.slice(0, displayText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), 1500);
-        }
-      } else {
-        if (displayText.length > 0) {
-          setDisplayText(displayText.slice(0, -1));
-        } else {
-          setIsDeleting(false);
-          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-        }
-      }
-    }, isDeleting ? 50 : 100);
-
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentRoleIndex]);
-
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 md:pt-0">
-      {/* Neural grid background */}
-      <div className="absolute inset-0 neural-grid opacity-20" />
-      
-      {/* Gradient glow effect */}
-      <div className="absolute inset-0 bg-[image:var(--gradient-glow)] pointer-events-none" />
-      
-      <div className="container px-4 mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between animate-fade-in">
-          <div className="md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left">
-            {/* Main heading with enhanced glow */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">
-              Hi, I'm{" "}
-              <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">Bhavya Mishra</span>
-            </h1>
+    <section className="relative min-h-screen overflow-x-hidden overflow-hidden hero-gradient-bg">
 
-            {/* Typing Animation */}
-            <div className="text-lg md:text-xl lg:text-2xl font-semibold h-7 md:h-8">
-              <span className="text-cyan-400">{displayText}</span>
-              <span className="animate-pulse text-cyan-400">|</span>
-            </div>
-            
-            <div className="inline-block bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-lg px-4 md:px-5 py-2 md:py-3 backdrop-blur-sm">
-              <p className="text-sm md:text-base text-foreground font-medium">
-                🚀 Crafting modern web experiences with clean code & creative design
-              </p>
-            </div>
-            
-            {/* Enhanced CTA buttons */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 pt-2 md:pt-4">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 neural-glow"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                <Mail className="mr-2 h-5 w-5" />
-                Get in Touch
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="neural-border hover:neural-glow"
-                asChild
-              >
-                <a 
-                  href="https://linkedin.com/in/bhavya-mishra-7a3b09324" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin className="mr-2 h-5 w-5" />
-                  View LinkedIn
-                </a>
-              </Button>
-            </div>
-            
+      {/* Subtle dot-grid texture */}
+      <div className="absolute inset-0 hero-dot-grid opacity-30 pointer-events-none" />
 
+      {/* Main content */}
+      <div className="container relative z-10 mx-auto max-w-6xl px-4 sm:px-6 pt-20 pb-4 md:pt-28 min-h-screen flex flex-col w-full">
+
+        {/* --- Top row: socials --- */}
+        <div className="fade-up-stagger stagger-1 flex items-center justify-end mb-4 md:mb-0">
+          <div className="flex items-center gap-2">
+            {[
+              { icon: Github, href: "https://github.com/Bhavya1352", label: "GitHub" },
+              { icon: Linkedin, href: "https://linkedin.com/in/bhavya-mishra-7a3b09324", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:bhavyamishra698@gmail.com", label: "Email" },
+            ].map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target={s.label !== "Email" ? "_blank" : undefined}
+                rel={s.label !== "Email" ? "noopener noreferrer" : undefined}
+                className="w-9 h-9 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/5 transition-all"
+                aria-label={s.label}
+              >
+                <s.icon className="w-4 h-4" />
+              </a>
+            ))}
           </div>
-          
-          <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
-            <div className="relative w-full max-w-[280px] sm:max-w-xs md:max-w-sm lg:max-w-md mx-auto">
-              {/* Enhanced glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary rounded-lg blur-2xl animate-pulse opacity-60"></div>
-              <div className="absolute inset-0 neural-border rounded-lg"></div>
-              
-              {/* Corner accents */}
-              <div className="absolute -top-2 -left-2 w-4 h-4 border-l-2 border-t-2 border-accent rounded-tl-lg" />
-              <div className="absolute -top-2 -right-2 w-4 h-4 border-r-2 border-t-2 border-accent rounded-tr-lg" />
-              <div className="absolute -bottom-2 -left-2 w-4 h-4 border-l-2 border-b-2 border-accent rounded-bl-lg" />
-              <div className="absolute -bottom-2 -right-2 w-4 h-4 border-r-2 border-b-2 border-accent rounded-br-lg" />
-              
-              <img 
-                src="/PROFILE.jpg.jpeg" 
-                alt="Bhavya Mishra" 
-                className="relative w-full rounded-lg shadow-2xl card-3d" 
-                loading="eager"
-                fetchPriority="high"
-              />
+        </div>
+
+        {/* --- Center: headline + photo --- */}
+        <div className="flex-1 flex items-center">
+          <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-12 items-center">
+
+            {/* Left — Headline */}
+            <div className="space-y-3 sm:space-y-5 order-2 md:order-1 text-center md:text-left min-w-0">
+              <h1 className="fade-up-stagger stagger-2 text-[1.75rem] leading-tight sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+                <span className="text-foreground">Hi, I'm </span>
+                <span className="text-gradient">Bhavya Mishra</span>
+              </h1>
+
+              <div className="fade-up-stagger stagger-3 flex items-center gap-3 justify-center md:justify-start">
+                <div className="w-8 h-px bg-primary/50" />
+                <p className="text-sm sm:text-lg font-medium text-muted-foreground tracking-wide">
+                  Frontend Developer
+                </p>
+              </div>
+
+              <p className="fade-up-stagger stagger-4 text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed break-words px-2 sm:px-0">
+                Passionate about building clean, intuitive digital experiences
+                that connect users with meaningful content through modern web technologies.
+              </p>
+
+              {/* CTA + availability badge */}
+              <div className="fade-up-stagger stagger-5 flex flex-col sm:flex-row items-center sm:items-center gap-3 pt-1 justify-center md:justify-start">
+                <button
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background font-semibold text-sm hover:bg-foreground/90 transition-all shadow-lg shadow-foreground/10"
+                >
+                  Get in Touch
+                  <span className="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                </button>
+
+                {/* Availability badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/30 bg-accent/5">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                  </span>
+                  <span className="text-[11px] font-medium text-accent">
+                    Available for opportunities
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right — Photo */}
+            <div className="fade-up-stagger stagger-3 relative flex justify-center order-1 md:order-2 mb-4 md:mb-0">
+              <div className="relative w-44 sm:w-56 md:w-64 lg:w-72 max-w-[75vw]">
+                {/* Soft glow behind */}
+                <div className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-transparent to-accent/10 rounded-full blur-3xl opacity-50" />
+
+                {/* Photo with bottom fade */}
+                <div className="relative hero-img-mask">
+                  <img
+                    src="/hero-image.jpg"
+                    alt="Bhavya Mishra"
+                    className="w-full rounded-2xl object-cover"
+                    style={{ aspectRatio: '3/4' }}
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* --- Bottom: tech stack marquee --- */}
+        <div className="fade-up-stagger stagger-6 relative mt-4 md:mt-8 border-t border-border/30 pt-4 md:pt-6 overflow-hidden">
+          <div className="marquee-track">
+            {[...techStack, ...techStack].map((tech, i) => (
+              <span
+                key={i}
+                className="mx-6 text-sm font-medium text-muted-foreground/60 whitespace-nowrap flex items-center gap-2 select-none"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+                {tech}
+              </span>
+            ))}
+          </div>
+          {/* Fade edges */}
+          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+        </div>
+
+        {/* Scroll hint */}
+        <div className="flex justify-center pt-4 pb-2">
+          <a
+            href="#about"
+            className="text-muted-foreground/40 hover:text-muted-foreground transition-colors"
+            aria-label="Scroll down"
+          >
+            <ArrowDown className="w-4 h-4 animate-bounce" />
+          </a>
+        </div>
       </div>
-      
-      {/* Enhanced decorative elements */}
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2 animate-pulse" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 animate-pulse" />
-      
-      {/* Floating nodes */}
-      <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-accent rounded-full animate-pulse" />
-      <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-      <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-accent rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
     </section>
   );
 };

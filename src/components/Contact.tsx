@@ -1,85 +1,87 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, MapPin, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+const contactItems = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "bhavyamishra698@gmail.com",
+    href: "mailto:bhavyamishra698@gmail.com",
+    accent: "text-primary",
+    bg: "bg-primary/10",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "bhavya-mishra-7a3b09324",
+    href: "https://linkedin.com/in/bhavya-mishra-7a3b09324",
+    accent: "text-accent",
+    bg: "bg-accent/10",
+    external: true,
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Noida, India",
+    href: null,
+    accent: "text-primary",
+    bg: "bg-primary/10",
+  },
+];
 
 const Contact = () => {
+  const heading = useScrollReveal();
+  const cards = contactItems.map(() => useScrollReveal({ threshold: 0.1 }));
+  const cta = useScrollReveal({ threshold: 0.1 });
+
   return (
-    <section id="contact" className="py-16 md:py-24 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-10 md:mb-16 animate-slide-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+    <section id="contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
+      <div className="container mx-auto max-w-5xl">
+        {/* Heading */}
+        <div ref={heading.ref} className={`mb-8 md:mb-12 text-center reveal-card ${heading.isVisible ? 'visible' : ''}`}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
             Let's <span className="text-gradient">Connect</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
-          <p className="text-muted-foreground mt-4 md:mt-6 max-w-2xl mx-auto text-base md:text-lg px-2">
-            I'm always excited to connect with fellow developers, explore new opportunities, 
-            and collaborate on innovative projects. Whether you're looking for a passionate web 
-            developer or want to discuss tech, let's grow together!
+          <div className="w-12 h-0.5 bg-primary/60 mt-3 rounded-full mx-auto" />
+          <p className="text-muted-foreground mt-4 max-w-md mx-auto">
+            Whether it's a project idea, collaboration, or just a quick chat — I'd love to hear from you.
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
-          <Card className="p-5 md:p-8 bg-card hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30 animate-slide-up">
-            <div className="flex items-start gap-3 md:gap-4">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl mx-auto mb-10">
+          {contactItems.map((item, i) => (
+            <div
+              key={item.label}
+              ref={cards[i].ref}
+              className={`flex flex-col items-center text-center p-4 sm:p-5 rounded-xl bg-card border border-border/60 hover:border-primary/30 transition-colors reveal-scale ${cards[i].isVisible ? 'visible' : ''}`}
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
+              <div className={`w-10 h-10 rounded-lg ${item.bg} flex items-center justify-center mb-3`}>
+                <item.icon className={`w-5 h-5 ${item.accent}`} />
               </div>
-              <div className="flex-1">
-                <h3 className="text-lg md:text-xl font-semibold mb-1 md:mb-2">Email</h3>
-                <a 
-                  href="mailto:bhavyamishra698@gmail.com"
-                  className="text-muted-foreground hover:text-primary transition-colors break-all"
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">{item.label}</p>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  className="text-sm font-medium text-foreground hover:text-primary transition-colors break-all text-center"
                 >
-                  bhavyamishra698@gmail.com
+                  {item.value}
                 </a>
-              </div>
+              ) : (
+                <p className="text-sm font-medium text-foreground break-all text-center">{item.value}</p>
+              )}
             </div>
-          </Card>
-          
-          <Card className="p-5 md:p-8 bg-card hover:shadow-xl transition-all duration-300 border-border/50 hover:border-accent/30 animate-slide-up">
-            <div className="flex items-start gap-3 md:gap-4">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Linkedin className="w-5 h-5 md:w-6 md:h-6 text-accent" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg md:text-xl font-semibold mb-1 md:mb-2">LinkedIn</h3>
-                <a 
-                  href="https://linkedin.com/in/bhavya-mishra-7a3b09324"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-accent transition-colors break-all"
-                >
-                  linkedin.com/in/bhavya-mishra-7a3b09324
-                </a>
-              </div>
-            </div>
-          </Card>
-          
-          <Card className="p-5 md:p-8 bg-card hover:shadow-xl transition-all duration-300 border-border/50 md:col-span-2 animate-slide-up">
-            <div className="flex items-start gap-3 md:gap-4">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg md:text-xl font-semibold mb-1 md:mb-2">Location</h3>
-                <p className="text-muted-foreground">Noida, Uttar Pradesh, India</p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Open to remote opportunities and local collaborations
-                </p>
-              </div>
-            </div>
-          </Card>
+          ))}
         </div>
-        
-        <div className="mt-8 md:mt-12 text-center animate-slide-up">
-          <Button 
-            size="lg"
-            className="bg-primary hover:bg-primary/90 glow-primary"
-            asChild
-          >
+
+        <div ref={cta.ref} className={`text-center reveal-card ${cta.isVisible ? 'visible' : ''}`}>
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
             <a href="mailto:bhavyamishra698@gmail.com">
-              <Send className="mr-2 h-5 w-5" />
-              Send Me an Email
+              <Send className="mr-2 h-4 w-4" />
+              Say Hello
             </a>
           </Button>
         </div>

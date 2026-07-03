@@ -1,89 +1,57 @@
-import { Card } from "@/components/ui/card";
-import { Code2, GitBranch, Users } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const skills = [
+const skillGroups = [
   {
-    icon: Code2,
-    title: "Front-End Development",
-    description: "Building responsive and interactive user interfaces with modern web technologies",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    nodes: 85,
+    title: "Languages",
+    items: ["JavaScript", "TypeScript", "HTML5", "CSS3"],
   },
   {
-    icon: GitBranch,
-    title: "Git Version Control",
-    description: "Managing code repositories and collaborating effectively with development teams",
-    color: "text-accent",
-    bgColor: "bg-accent/10",
-    nodes: 92,
+    title: "Frameworks & Libraries",
+    items: ["React", "Next.js", "Tailwind CSS", "Node.js"],
   },
   {
-    icon: Users,
-    title: "Leadership",
-    description: "Leading projects and coordinating teams to achieve collaborative goals",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    nodes: 78,
+    title: "Tools & Platforms",
+    items: ["Git", "GitHub", "Vercel", "VS Code"],
+  },
+  {
+    title: "Concepts",
+    items: ["Responsive Design", "REST APIs", "UI/UX", "Open Source"],
   },
 ];
 
 const Skills = () => {
-  return (
-    <section id="skills" className="py-16 md:py-24 px-4 bg-card/30 relative">
-      <div className="absolute inset-0 neural-grid opacity-10" />
-      
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="text-center mb-10 md:mb-16 animate-slide-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Core <span className="text-primary font-extrabold">Skills</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full pulse-glow" />
-          <p className="text-muted-foreground mt-6 max-w-2xl mx-auto">
-            Passionate about front-end development with hands-on experience in modern web technologies 
-            and version control systems
-          </p>
-        </div>
-        
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-          {skills.map((skill, index) => {
-            const Icon = skill.icon;
-            return (
-              <Card 
-                key={index}
-                className="group p-5 md:p-8 neural-border card-3d relative overflow-hidden"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="absolute top-4 right-4 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-                </div>
-                
-                <div className={`w-12 h-12 md:w-16 md:h-16 ${skill.bgColor} neural-border rounded-xl flex items-center justify-center mb-4 md:mb-6 group-hover:neural-glow transition-all duration-300 relative`}>
-                  <Icon className={`w-6 h-6 md:w-8 md:h-8 ${skill.color} group-hover:scale-110 transition-transform duration-300`} />
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-accent/10 rounded-xl" />
-                </div>
-                
-                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:neon-text transition-all duration-300">
-                  {skill.title}
-                </h3>
-                
-                <p className="text-muted-foreground leading-relaxed text-sm mb-3 md:mb-4">
-                  {skill.description}
-                </p>
-                
+  const heading = useScrollReveal();
+  const cards = skillGroups.map(() => useScrollReveal({ threshold: 0.1 }));
 
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg" />
-                
-                <div className="absolute bottom-2 left-2 w-1 h-1 bg-primary rounded-full animate-pulse" style={{ animationDelay: `${index * 0.5}s` }} />
-                <div className="absolute bottom-2 right-2 w-1 h-1 bg-accent rounded-full animate-pulse" style={{ animationDelay: `${index * 0.7}s` }} />
-              </Card>
-            );
-          })}
+  return (
+    <section id="skills" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-card/40">
+      <div className="container mx-auto max-w-5xl">
+        {/* Heading */}
+        <div ref={heading.ref} className={`mb-8 md:mb-12 reveal-card ${heading.isVisible ? 'visible' : ''}`}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+            Skills & <span className="text-gradient">Tech Stack</span>
+          </h2>
+          <div className="w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
         </div>
-        
-        <div className="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-px">
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {skillGroups.map((group, i) => (
+            <div key={group.title} ref={cards[i].ref} className={`min-w-0 reveal-card ${cards[i].isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${i * 100}ms` }}>
+              <h3 className="text-sm uppercase tracking-wider text-muted-foreground font-medium mb-3">
+                {group.title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="px-3 py-1.5 text-sm rounded-lg bg-background border border-border/60 text-foreground hover:border-primary/40 hover:text-primary transition-colors cursor-default"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

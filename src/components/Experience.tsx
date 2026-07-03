@@ -1,103 +1,76 @@
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, Calendar } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const experiences = [
   {
     title: "Frontend Intern",
     organization: "Naya Growth",
-    period: "May 2026 - Present",
-    description: "Enhanced existing web pages by improving layout structure, responsiveness, and overall UI consistency. Developed reusable React components to maintain consistent and scalable frontend design. Worked closely with the team to implement new frontend features and improve user experience on different screen sizes.",
-    tags: ["React", "UI/UX", "Frontend", "Web Development"],
+    period: "May 2026 – Present",
+    description:
+      "Improved page layout, responsiveness, and UI consistency. Built reusable React components and collaborated with the team on new frontend features.",
+    tags: ["React", "UI/UX", "Frontend"],
   },
   {
     title: "Frontend Intern",
     organization: "Varak Welfare Society",
-    period: "November 2025 - March 2026",
-    description: "Developing and maintaining web applications, building responsive UI components and enhancing user experience.",
-    tags: ["React", "Frontend Development", "Web Development"],
+    period: "Nov 2025 – Mar 2026",
+    description:
+      "Developed and maintained web applications, built responsive UI components, and enhanced the overall user experience.",
+    tags: ["React", "Frontend Development"],
   },
   {
     title: "Project Administrator",
     organization: "GirlScript Summer of Code",
-    period: "July - September 2025",
-    description: "Leading project coordination and community engagement for one of India's largest open-source programs.",
-    tags: ["Leadership", "Open Source", "Community"],
-  },
-  {
-    title: "Project Administrator",
-    organization: "Social Summer of Code",
-    period: "June - July 2025",
-    description: "Managing projects and fostering collaboration within the Script Foundation community.",
-    tags: ["Project Management", "Collaboration", "Technical"],
-  },
-  {
-    title: "Executive Member",
-    organization: "Lingua Franca JSSATE",
-    period: "January 2025 - Present",
-    description: "Contributing to technical initiatives and student engagement activities.",
-    tags: ["Technical Events", "Student Development", "Engagement"],
+    period: "Jul – Sep 2025",
+    description:
+      "Led project coordination and community engagement for one of India's largest open-source programs.",
+    tags: ["Open Source", "Leadership"],
   },
 ];
 
 const Experience = () => {
+  const heading = useScrollReveal();
+  const items = experiences.map(() => useScrollReveal({ threshold: 0.1 }));
+
   return (
-    <section id="experience" className="py-16 md:py-24 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-10 md:mb-16 animate-slide-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Professional <span className="text-gradient">Experience</span>
+    <section id="experience" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
+      <div className="container mx-auto max-w-5xl">
+        {/* Heading */}
+        <div ref={heading.ref} className={`mb-8 md:mb-12 reveal-card ${heading.isVisible ? 'visible' : ''}`}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+            <span className="text-gradient">Experience</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
-          <p className="text-muted-foreground mt-6 max-w-2xl mx-auto">
-            Building leadership and technical expertise through active involvement in open-source communities 
-            and student organizations
-          </p>
+          <div className="w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
         </div>
-        
-        <div className="space-y-4 md:space-y-8">
-          {experiences.map((exp, index) => (
-            <Card 
-              key={index}
-              className="p-5 md:p-8 bg-card hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30 animate-slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 md:w-14 md:h-14 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <Briefcase className="w-6 h-6 md:w-7 md:h-7 text-primary" />
-                  </div>
+
+        {/* Timeline */}
+        <div className="relative border-l border-border/60 ml-1 sm:ml-2 space-y-8 sm:space-y-10 pl-6 sm:pl-8">
+          {experiences.map((exp, i) => (
+            <div key={i} ref={items[i].ref} className={`relative reveal-card ${items[i].isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${i * 120}ms` }}>
+              {/* Dot */}
+              <div className="absolute -left-[calc(1.5rem+5px)] sm:-left-[calc(2rem+5px)] top-1.5 w-2.5 h-2.5 rounded-full bg-primary/80 ring-4 ring-background" />
+
+              <div className="space-y-2">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 className="text-lg font-semibold text-foreground">{exp.title}</h3>
+                  <span className="text-sm text-primary font-medium">{exp.organization}</span>
                 </div>
-                
-                <div className="flex-1 space-y-3 md:space-y-4">
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-semibold mb-1">{exp.title}</h3>
-                    <p className="text-base md:text-lg text-primary font-medium">{exp.organization}</p>
-                  </div>
-                  
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Calendar className="w-4 h-4" />
-                    <span className="text-sm">{exp.period}</span>
-                  </div>
-                  
-                  <p className="text-muted-foreground leading-relaxed">
-                    {exp.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tags.map((tag, tagIndex) => (
-                      <Badge 
-                        key={tagIndex}
-                        variant="secondary"
-                        className="bg-primary/10 text-primary hover:bg-primary/20"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
+
+                <p className="text-xs uppercase tracking-wider text-muted-foreground">{exp.period}</p>
+
+                <p className="text-sm text-muted-foreground leading-relaxed break-words">
+                  {exp.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {exp.tags.map((tag) => (
+                    <Badge key={tag} variant="secondary" className="text-xs bg-secondary text-secondary-foreground">
+                      {tag}
+                    </Badge>
+                  ))}
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
