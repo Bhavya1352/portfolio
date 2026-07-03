@@ -135,17 +135,17 @@ const Hero = () => {
 
             {/* Right — Photo */}
             <div className="fade-up-stagger stagger-3 relative flex justify-center order-1 md:order-2 mb-4 md:mb-0">
-              <div className="relative w-44 sm:w-56 md:w-64 lg:w-72 max-w-[75vw]">
+              <div className="relative w-60 sm:w-72 md:w-80 lg:w-88 max-w-[75vw]">
                 {/* Soft glow behind */}
                 <div className="absolute -inset-6 bg-primary/10 rounded-full blur-3xl opacity-50" />
 
-                {/* Photo with bottom fade */}
-                <div className="relative hero-img-mask">
+                {/* Photo - circle shape with outline */}
+                <div className="relative rounded-full ring-4 ring-primary/30">
                   <img
                     src="/hero-image.jpg"
                     alt="Bhavya Mishra"
-                    className="w-full rounded-2xl object-cover"
-                    style={{ aspectRatio: '3/4' }}
+                    className="w-full rounded-full object-cover"
+                    style={{ aspectRatio: '1/1' }}
                     loading="eager"
                     fetchPriority="high"
                   />
