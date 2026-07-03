@@ -5,10 +5,10 @@ import { useMemo } from "react";
 // Pre-generate random scatter values for each card
 const generateScatter = (count: number) => {
   return Array.from({ length: count }, () => ({
-    x: (Math.random() - 0.5) * 1200,
-    y: (Math.random() - 0.5) * 800,
-    rotate: (Math.random() - 0.5) * 90,
-    scale: 0.3 + Math.random() * 0.5,
+    x: (Math.random() - 0.5) * 600,
+    y: (Math.random() - 0.5) * 400,
+    rotate: (Math.random() - 0.5) * 60,
+    scale: 0.5 + Math.random() * 0.4,
   }));
 };
 
