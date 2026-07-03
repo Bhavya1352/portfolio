@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
 const techStack = [
@@ -5,12 +6,53 @@ const techStack = [
   "Next.js", "Node.js", "Git", "HTML5", "CSS3", "Vercel",
 ];
 
+const roles = ["Frontend Developer", "React Developer", "Open Source Contributor", "UI Enthusiast"];
+
 const Hero = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = roles[roleIndex];
+    const speed = deleting ? 40 : 80;
+
+    const timeout = setTimeout(() => {
+      if (!deleting) {
+        setText(current.slice(0, text.length + 1));
+        if (text.length + 1 === current.length) {
+          setTimeout(() => setDeleting(true), 1500);
+        }
+      } else {
+        setText(current.slice(0, text.length - 1));
+        if (text.length - 1 === 0) {
+          setDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timeout);
+  }, [text, deleting, roleIndex]);
+
   return (
     <section className="relative min-h-screen overflow-x-hidden overflow-hidden hero-gradient-bg">
 
       {/* Subtle dot-grid texture */}
       <div className="absolute inset-0 hero-dot-grid opacity-30 pointer-events-none" />
+
+      {/* Abstract background image - subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      {/* Soft radial glow accents */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/[0.04] blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/[0.03] blur-[100px] pointer-events-none" />
 
       {/* Main content */}
       <div className="container relative z-10 mx-auto max-w-6xl px-4 sm:px-6 pt-20 pb-4 md:pt-28 min-h-screen flex flex-col w-full">
@@ -43,15 +85,16 @@ const Hero = () => {
 
             {/* Left — Headline */}
             <div className="space-y-3 sm:space-y-5 order-2 md:order-1 text-center md:text-left min-w-0">
-              <h1 className="fade-up-stagger stagger-2 text-[1.75rem] leading-tight sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+              <h1 className="fade-up-stagger stagger-2 text-3xl leading-tight sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
                 <span className="text-foreground">Hi, I'm </span>
                 <span className="text-gradient">Bhavya Mishra</span>
               </h1>
 
-              <div className="fade-up-stagger stagger-3 flex items-center gap-3 justify-center md:justify-start">
-                <div className="w-8 h-px bg-primary/50" />
-                <p className="text-sm sm:text-lg font-medium text-muted-foreground tracking-wide">
-                  Frontend Developer
+              <div className="fade-up-stagger stagger-3 flex items-center gap-3 justify-center md:justify-start min-w-0">
+                <div className="w-8 h-px bg-primary/50 flex-shrink-0" />
+                <p className="text-sm sm:text-lg font-medium text-primary tracking-wide truncate">
+                  {text}
+                  <span className="animate-pulse ml-0.5 text-primary/60">|</span>
                 </p>
               </div>
 
@@ -87,7 +130,7 @@ const Hero = () => {
             <div className="fade-up-stagger stagger-3 relative flex justify-center order-1 md:order-2 mb-4 md:mb-0">
               <div className="relative w-44 sm:w-56 md:w-64 lg:w-72 max-w-[75vw]">
                 {/* Soft glow behind */}
-                <div className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-transparent to-accent/10 rounded-full blur-3xl opacity-50" />
+                <div className="absolute -inset-6 bg-primary/10 rounded-full blur-3xl opacity-50" />
 
                 {/* Photo with bottom fade */}
                 <div className="relative hero-img-mask">
@@ -119,8 +162,8 @@ const Hero = () => {
             ))}
           </div>
           {/* Fade edges */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-y-0 left-0 w-10 sm:w-20 bg-background pointer-events-none z-10" />
+          <div className="absolute inset-y-0 right-0 w-10 sm:w-20 bg-background pointer-events-none z-10" />
         </div>
 
         {/* Scroll hint */}
