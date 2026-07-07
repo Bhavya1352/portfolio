@@ -40,8 +40,8 @@ const Hero = () => {
 
       {/* Background image — slight blur on desktop only */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat scale-105 opacity-100 brightness-125 saturate-110"
-        style={{ backgroundImage: 'url(/hero-screenshot-bg.png)' }}
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat scale-105 opacity-[0.2] brightness-75 saturate-50"
+        style={{ backgroundImage: 'url(/hero-bg.avif)' }}
       />
 
       {/* Dark overlay for readability */}
