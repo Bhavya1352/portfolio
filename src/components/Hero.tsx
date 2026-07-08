@@ -381,12 +381,12 @@ const Hero = () => {
                   <Pin className="w-3.5 h-3.5 sm:w-4 sm:h-4 rotate-12" />
                 </div>
 
-                {/* Photo grayscale container */}
+                {/* Photo container */}
                 <div className="w-full aspect-square rounded-lg bg-[#100B10] overflow-hidden mb-3 sm:mb-4 border border-[#A63A50]/10">
                   <img
                     src="/PROFILE.jpg.jpeg"
                     alt="Bhavya Mishra Portrait"
-                    className="w-full h-full object-cover grayscale brightness-95 contrast-125 hover:grayscale-0 transition-all duration-750"
+                    className="w-full h-full object-cover brightness-95 contrast-125 transition-all duration-750"
                   />
                 </div>
 
