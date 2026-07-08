@@ -36,49 +36,49 @@ const Contact = () => {
   const cta = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section id="contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6">
       <div className="container mx-auto max-w-5xl">
         {/* Heading */}
-        <div ref={heading.ref} className={`mb-8 md:mb-12 text-center reveal-card ${heading.isVisible ? 'visible' : ''}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            Let's <span className="text-gradient">Connect</span>
+        <div ref={heading.ref} className={`mb-8 sm:mb-10 md:mb-12 text-center reveal-card ${heading.isVisible ? 'visible' : ''}`}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight text-foreground">
+            Let's <span className="font-serif italic font-semibold text-primary">Connect</span>
           </h2>
-          <div className="w-12 h-0.5 bg-primary/60 mt-3 rounded-full mx-auto" />
-          <p className="text-muted-foreground mt-4 max-w-md mx-auto">
+          <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full mx-auto" />
+          <p className="text-muted-foreground mt-4 max-w-md mx-auto text-sm sm:text-base">
             Whether it's a project idea, collaboration, or just a quick chat — I'd love to hear from you.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl mx-auto mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 w-full max-w-3xl mx-auto mb-8 sm:mb-10">
           {contactItems.map((item, i) => (
             <div
               key={item.label}
               ref={cards[i].ref}
-              className={`flex flex-col items-center text-center p-4 sm:p-5 rounded-xl bg-card border border-border/60 hover:border-primary/30 transition-colors reveal-scale ${cards[i].isVisible ? 'visible' : ''}`}
+              className={`flex flex-col items-center text-center p-3.5 sm:p-4 md:p-5 rounded-xl bg-card border border-border/60 hover:border-primary/30 transition-colors reveal-scale ${cards[i].isVisible ? 'visible' : ''}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className={`w-10 h-10 rounded-lg ${item.bg} flex items-center justify-center mb-3`}>
-                <item.icon className={`w-5 h-5 ${item.accent}`} />
+              <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg ${item.bg} flex items-center justify-center mb-2.5 sm:mb-3`}>
+                <item.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${item.accent}`} />
               </div>
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">{item.label}</p>
+              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground mb-1">{item.label}</p>
               {item.href ? (
                 <a
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors break-all text-center"
+                  className="text-xs sm:text-sm font-medium text-foreground hover:text-primary transition-colors break-all text-center"
                 >
                   {item.value}
                 </a>
               ) : (
-                <p className="text-sm font-medium text-foreground break-all text-center">{item.value}</p>
+                <p className="text-xs sm:text-sm font-medium text-foreground break-all text-center">{item.value}</p>
               )}
             </div>
           ))}
         </div>
 
         <div ref={cta.ref} className={`text-center reveal-card ${cta.isVisible ? 'visible' : ''}`}>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm sm:text-base px-6 sm:px-8" asChild>
             <a href="mailto:bhavyamishra698@gmail.com">
               <Send className="mr-2 h-4 w-4" />
               Say Hello

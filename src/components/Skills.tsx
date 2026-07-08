@@ -1,4 +1,6 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const skillGroups = [
   {
@@ -20,31 +22,75 @@ const skillGroups = [
 ];
 
 const Skills = () => {
-  const heading = useScrollReveal();
-  const cards = skillGroups.map(() => useScrollReveal({ threshold: 0.1 }));
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // Heading anim
+      gsap.fromTo(
+        ".skills-heading",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".skills-heading",
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Card groups reveal
+      gsap.fromTo(
+        ".skill-group",
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".skills-grid",
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="skills" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-card/40">
+    <section id="skills" ref={containerRef} className="py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 bg-card/25 dot-bg relative border-b border-border/40">
       <div className="container mx-auto max-w-5xl">
-        {/* Heading */}
-        <div ref={heading.ref} className={`mb-8 md:mb-12 reveal-card ${heading.isVisible ? 'visible' : ''}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            Skills & <span className="text-gradient">Tech Stack</span>
+        
+        {/* Section Heading */}
+        <div className="skills-heading mb-8 sm:mb-10 md:mb-14">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight text-foreground">
+            Skills &amp; <span className="font-serif italic font-semibold text-primary">Tech Stack</span>
           </h2>
-          <div className="w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
+          <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
-          {skillGroups.map((group, i) => (
-            <div key={group.title} ref={cards[i].ref} className={`min-w-0 reveal-card ${cards[i].isVisible ? 'visible' : ''}`} style={{ transitionDelay: `${i * 100}ms` }}>
-              <h3 className="text-sm uppercase tracking-wider text-muted-foreground font-bold mb-3">
+        {/* Skills Grid */}
+        <div className="skills-grid grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
+          {skillGroups.map((group) => (
+            <div key={group.title} className="skill-group min-w-0">
+              <h3 className="text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground font-bold mb-3 sm:mb-4">
                 {group.title}
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 sm:gap-2.5">
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="px-3 py-1.5 text-sm rounded-lg bg-background border border-border/60 text-foreground hover:border-primary/40 hover:text-primary transition-colors cursor-default"
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm rounded-xl bg-background border border-border/80 text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default shadow-sm select-none hover-lift magnetic-item"
                   >
                     {item}
                   </span>
@@ -53,6 +99,7 @@ const Skills = () => {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
