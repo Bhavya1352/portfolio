@@ -262,7 +262,7 @@ const Hero = () => {
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-[90vh] sm:min-h-screen aurora-bg grid-lines stars-overlay flex flex-col justify-between overflow-hidden py-8 sm:py-12 md:py-20"
+      className="relative min-h-fit md:min-h-screen aurora-bg grid-lines stars-overlay flex flex-col justify-between overflow-visible md:overflow-hidden py-8 sm:py-12 md:py-20"
     >
       {/* Cinematic glow blobs */}
       <div className="hero-aurora-blob absolute top-1/4 left-4 sm:left-10 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] rounded-full bg-primary/20 blur-[100px] sm:blur-[130px] pointer-events-none" />
@@ -276,7 +276,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center w-full">
 
           {/* LEFT: Floating VS Code Card */}
-          <div className="md:col-span-3 flex justify-center order-2 md:order-1">
+          <div className="md:col-span-3 flex justify-center order-2 md:order-1 pb-8 md:pb-0">
             <div
               ref={leftCardRef}
               className="relative w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] rounded-xl border border-primary/20 bg-card/80 backdrop-blur-xl shadow-2xl p-0.5 overflow-hidden group hover:border-primary/40 transition-colors duration-500"
@@ -304,7 +304,7 @@ const Hero = () => {
           {/* CENTER: Typography, Description & Buttons */}
           <div
             ref={centerTextRef}
-            className="md:col-span-6 text-center flex flex-col items-center space-y-3 sm:space-y-4 md:space-y-6 order-1 md:order-2 px-2"
+            className="md:col-span-6 text-center flex flex-col items-center space-y-3 sm:space-y-4 md:space-y-6 order-1 md:order-2 px-2 pb-8 md:pb-0"
           >
             {/* Pill Badge */}
             <div className="hero-entrance-reveal inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 shadow-inner">
@@ -373,7 +373,7 @@ const Hero = () => {
           </div>
 
           {/* RIGHT: Polaroid Image & Floating Experience Card */}
-          <div className="md:col-span-3 flex flex-col items-center gap-4 sm:gap-6 order-3">
+          <div className="md:col-span-3 flex flex-col items-center gap-4 sm:gap-6 order-3 pb-12 md:pb-0">
             <div ref={rightWrapRef} className="relative flex flex-col items-center w-full max-w-[240px] sm:max-w-[280px]">
 
               {/* Polaroid Frame */}
