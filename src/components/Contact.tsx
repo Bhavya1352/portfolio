@@ -40,11 +40,11 @@ const Contact = () => {
       <div className="container mx-auto max-w-5xl">
         {/* Heading */}
         <div ref={heading.ref} className={`mb-8 sm:mb-10 md:mb-12 text-center reveal-card ${heading.isVisible ? 'visible' : ''}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight text-foreground">
-            Let's <span className="font-serif italic font-semibold text-primary">Connect</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
+            Let's <span className="font-serif italic font-bold text-primary">Connect</span>
           </h2>
           <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full mx-auto" />
-          <p className="text-muted-foreground mt-4 max-w-md mx-auto text-sm sm:text-base">
+          <p className="text-muted-foreground mt-4 max-w-md mx-auto text-sm sm:text-base font-semibold">
             Whether it's a project idea, collaboration, or just a quick chat — I'd love to hear from you.
           </p>
         </div>
@@ -60,18 +60,18 @@ const Contact = () => {
               <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg ${item.bg} flex items-center justify-center mb-2.5 sm:mb-3`}>
                 <item.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${item.accent}`} />
               </div>
-              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground mb-1">{item.label}</p>
+              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground mb-1 font-bold">{item.label}</p>
               {item.href ? (
                 <a
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
-                  className="text-xs sm:text-sm font-medium text-foreground hover:text-primary transition-colors break-all text-center"
+                  className="text-xs sm:text-sm font-semibold text-foreground hover:text-primary transition-colors whitespace-nowrap text-center"
                 >
                   {item.value}
                 </a>
               ) : (
-                <p className="text-xs sm:text-sm font-medium text-foreground break-all text-center">{item.value}</p>
+                <p className="text-xs sm:text-sm font-semibold text-foreground whitespace-nowrap text-center">{item.value}</p>
               )}
             </div>
           ))}

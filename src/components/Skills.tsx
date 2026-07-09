@@ -73,8 +73,8 @@ const Skills = () => {
         
         {/* Section Heading */}
         <div className="skills-heading mb-8 sm:mb-10 md:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight text-foreground">
-            Skills &amp; <span className="font-serif italic font-semibold text-primary">Tech Stack</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
+            Skills &amp; <span className="font-serif italic font-bold text-primary">Tech Stack</span>
           </h2>
           <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
         </div>
@@ -90,7 +90,7 @@ const Skills = () => {
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm rounded-xl bg-background border border-border/80 text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default shadow-sm select-none hover-lift magnetic-item"
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-xl bg-background border border-border/80 text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default shadow-sm select-none hover-lift magnetic-item"
                   >
                     {item}
                   </span>

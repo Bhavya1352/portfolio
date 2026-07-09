@@ -116,7 +116,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
           {project.title}
         </h3>
 
-        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed flex-grow mb-3 sm:mb-5">
+        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed flex-grow mb-3 sm:mb-5 font-semibold">
           {project.description}
         </p>
 
@@ -124,7 +124,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary hover:underline group-hover:gap-2.5 transition-all mt-auto"
+          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-primary hover:underline group-hover:gap-2.5 transition-all mt-auto"
         >
           View Project
           <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
@@ -186,8 +186,8 @@ const Projects = () => {
 
         {/* Section Heading */}
         <div className="projects-heading mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight text-foreground">
-            Featured <span className="font-serif italic font-semibold text-primary">Projects</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
+            Featured <span className="font-serif italic font-bold text-primary">Projects</span>
           </h2>
           <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
         </div>

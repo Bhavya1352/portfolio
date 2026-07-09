@@ -82,8 +82,8 @@ const Experience = () => {
         
         {/* Section Heading */}
         <div className="experience-heading mb-8 sm:mb-10 md:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight text-foreground">
-            Professional <span className="font-serif italic font-semibold text-primary">Experience</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
+            Professional <span className="font-serif italic font-bold text-primary">Experience</span>
           </h2>
           <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
         </div>
@@ -98,12 +98,12 @@ const Experience = () => {
               <div className="space-y-2 sm:space-y-3">
                 <div className="flex flex-wrap items-baseline gap-x-2 sm:gap-x-3 gap-y-1">
                   <h3 className="text-base sm:text-lg md:text-xl font-serif font-bold text-foreground transition-colors group-hover:text-primary">{exp.title}</h3>
-                  <span className="text-xs sm:text-sm font-semibold text-primary/80">{exp.organization}</span>
+                  <span className="text-xs sm:text-sm font-bold text-primary/80">{exp.organization}</span>
                 </div>
 
                 <p className="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-muted-foreground">{exp.period}</p>
 
-                <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
+                <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl font-semibold">
                   {exp.description}
                 </p>
 

@@ -260,15 +260,16 @@ const Hero = () => {
 
   return (
     <section
+      id="hero"
       ref={containerRef}
       className="relative min-h-[90vh] sm:min-h-screen aurora-bg grid-lines stars-overlay flex flex-col justify-between overflow-hidden py-8 sm:py-12 md:py-20"
     >
-      {/* Cinematic purple glow blobs */}
-      <div className="hero-aurora-blob absolute top-1/4 left-4 sm:left-10 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] rounded-full bg-[#A63A50]/10 blur-[100px] sm:blur-[130px] pointer-events-none" />
-      <div className="hero-aurora-blob absolute bottom-10 right-4 sm:right-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full bg-[#E26D8A]/8 blur-[120px] sm:blur-[150px] pointer-events-none" />
+      {/* Cinematic glow blobs */}
+      <div className="hero-aurora-blob absolute top-1/4 left-4 sm:left-10 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] rounded-full bg-primary/20 blur-[100px] sm:blur-[130px] pointer-events-none" />
+      <div className="hero-aurora-blob absolute bottom-10 right-4 sm:right-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full bg-accent/15 blur-[120px] sm:blur-[150px] pointer-events-none" />
 
       {/* Decorative center spotlight overlay */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#100B10]/40 to-[#100B10]/80 pointer-events-none" />
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-background/40 to-background/80 pointer-events-none" />
 
       {/* Main Grid Wrapper */}
       <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6 flex-grow flex items-center pt-8 sm:pt-12 md:pt-16 pb-4 sm:pb-6 md:pb-8">
@@ -278,14 +279,14 @@ const Hero = () => {
           <div className="md:col-span-3 flex justify-center order-2 md:order-1">
             <div
               ref={leftCardRef}
-              className="relative w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] rounded-xl border border-[#A63A50]/15 bg-[#1A141A]/80 backdrop-blur-xl shadow-2xl p-0.5 overflow-hidden group hover:border-[#E26D8A]/40 transition-colors duration-500"
+              className="relative w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] rounded-xl border border-primary/20 bg-card/80 backdrop-blur-xl shadow-2xl p-0.5 overflow-hidden group hover:border-primary/40 transition-colors duration-500"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Card glossy lighting highlight */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
 
               {/* Title bar */}
-              <div className="flex items-center justify-between px-4 py-3 border-b border-[#A63A50]/10 bg-[#1A141A]/50">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-primary/10 bg-card/50">
                 <div className="flex gap-1.5">
                   <span className="w-3 h-3 rounded-full bg-[#FF5F56]" />
                   <span className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
@@ -317,7 +318,7 @@ const Hero = () => {
             </div>
 
             {/* Sub-heading label */}
-            <p className="hero-entrance-reveal text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold text-[#E26D8A]/60">
+            <p className="hero-entrance-reveal text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold text-primary/80">
               Designing Front-End Architectures
             </p>
 
@@ -328,7 +329,7 @@ const Hero = () => {
 
 
             {/* Personal philosophy */}
-            <p className="hero-entrance-reveal text-[11px] sm:text-xs md:text-sm text-[#FFF6F8]/50 leading-relaxed max-w-md font-medium px-2">
+            <p className="hero-entrance-reveal text-[11px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed max-w-md font-semibold px-2">
               I build fast, accessible, and intuitive web applications with React, TypeScript, and modern frontend technologies — focusing on performance, usability, and the details that make products feel polished.
             </p>
 
@@ -336,7 +337,7 @@ const Hero = () => {
             <div className="hero-entrance-reveal flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#A63A50] text-[#FFF6F8] font-bold text-xs sm:text-sm hover:bg-[#A63A50]/80 transition-colors shadow-lg shadow-[#A63A50]/20 magnetic-item w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-primary text-primary-foreground font-bold text-xs sm:text-sm hover:bg-primary/80 transition-colors shadow-lg shadow-primary/20 magnetic-item w-full sm:w-auto"
               >
                 Get in Touch
                 <ArrowUpRight className="w-4 h-4" />
@@ -344,7 +345,7 @@ const Hero = () => {
 
               <button
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-[#A63A50]/20 hover:border-[#E26D8A]/50 text-[#FFF6F8] font-bold text-xs sm:text-sm transition-colors bg-[#1A141A]/50 backdrop-blur-sm magnetic-item w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-primary/20 hover:border-primary/50 text-foreground font-bold text-xs sm:text-sm transition-colors bg-card/50 backdrop-blur-sm magnetic-item w-full sm:w-auto"
               >
                 Explore My Work
               </button>
@@ -362,7 +363,7 @@ const Hero = () => {
                   href={s.href}
                   target={s.label !== "Email" ? "_blank" : undefined}
                   rel={s.label !== "Email" ? "noopener noreferrer" : undefined}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#A63A50]/20 bg-[#1A141A]/50 flex items-center justify-center text-[#FFF6F8]/40 hover:text-[#E26D8A] hover:border-[#E26D8A]/50 transition-all magnetic-item"
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-primary/20 bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all magnetic-item"
                   aria-label={s.label}
                 >
                   <s.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -376,13 +377,13 @@ const Hero = () => {
             <div ref={rightWrapRef} className="relative flex flex-col items-center w-full max-w-[240px] sm:max-w-[280px]">
 
               {/* Polaroid Frame */}
-              <div className="relative w-full p-3 sm:p-4 pb-6 sm:pb-8 bg-[#1A141A] border border-[#A63A50]/15 rounded-xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="relative w-full p-3 sm:p-4 pb-6 sm:pb-8 bg-card border border-primary/15 rounded-xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
                 <div className="absolute top-2 left-2 text-zinc-700 opacity-60">
                   <Pin className="w-3.5 h-3.5 sm:w-4 sm:h-4 rotate-12" />
                 </div>
 
                 {/* Photo container */}
-                <div className="w-full aspect-square rounded-lg bg-[#100B10] overflow-hidden mb-3 sm:mb-4 border border-[#A63A50]/10">
+                <div className="w-full aspect-square rounded-lg bg-background overflow-hidden mb-3 sm:mb-4 border border-primary/10">
                   <img
                     src="/PROFILE.jpg.jpeg"
                     alt="Bhavya Mishra Portrait"
@@ -390,24 +391,20 @@ const Hero = () => {
                   />
                 </div>
 
-                {/* Caption */}
-                <div className="text-center font-serif italic text-[10px] sm:text-xs tracking-wider text-[#FFF6F8]/40">
-                  Noida • 2026
-                </div>
               </div>
 
               {/* Floating Experience Card below Polaroid */}
-              <div className="absolute -bottom-8 sm:-bottom-10 -left-4 sm:-left-6 w-56 sm:w-64 p-3 sm:p-4 rounded-xl border border-[#A63A50]/15 bg-[#1A141A]/90 backdrop-blur-md shadow-2xl flex items-center justify-between gap-2 sm:gap-3 hover:border-[#E26D8A]/40 transition-colors duration-500">
+              <div className="absolute -bottom-8 sm:-bottom-10 -left-4 sm:-left-6 w-56 sm:w-64 p-3 sm:p-4 rounded-xl border border-primary/15 bg-card/90 backdrop-blur-md shadow-2xl flex items-center justify-between gap-2 sm:gap-3 hover:border-primary/40 transition-colors duration-500">
                 <div className="flex items-center gap-2.5 sm:gap-3.5">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#A63A50]/10 border border-[#A63A50]/20 flex items-center justify-center flex-shrink-0">
-                    <FolderGit2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#E26D8A]" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                    <FolderGit2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
                   <div className="text-left">
-                    <h4 className="text-[9px] sm:text-[10px] uppercase font-bold text-[#FFF6F8]/40 tracking-wider">Project Admin</h4>
+                    <h4 className="text-[9px] sm:text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Project Admin</h4>
                     <p className="text-[10px] sm:text-xs font-bold text-foreground mt-0.5">at SSOC & GSSOC</p>
                   </div>
                 </div>
-                <div className="px-1.5 sm:px-2 py-1 rounded bg-[#A63A50]/15 border border-[#A63A50]/25 text-[8px] sm:text-[9px] font-bold text-[#E26D8A] uppercase tracking-wider">
+                <div className="px-1.5 sm:px-2 py-1 rounded bg-primary/15 border border-primary/25 text-[8px] sm:text-[9px] font-bold text-primary uppercase tracking-wider">
                   2025
                 </div>
               </div>
@@ -419,12 +416,12 @@ const Hero = () => {
       </div>
 
       {/* BOTTOM: Tech Stack Marquee */}
-      <div className="relative border-t border-[#A63A50]/10 bg-[#100B10]/60 backdrop-blur-[2px] py-4 overflow-hidden select-none">
+      <div className="relative border-t border-primary/10 bg-background/60 backdrop-blur-[2px] py-4 overflow-hidden select-none">
         <div className="marquee-track">
           {[...techStack, ...techStack].map((tech, i) => (
             <span
               key={i}
-              className="mx-8 text-[10px] uppercase font-bold tracking-widest text-[#FFF6F8]/30 flex items-center gap-3"
+              className="mx-8 text-[10px] uppercase font-bold tracking-widest text-muted-foreground flex items-center gap-3"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
               {tech}
@@ -432,8 +429,8 @@ const Hero = () => {
           ))}
         </div>
         {/* Gradients to blend marquee edges */}
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#100B10] to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#100B10] to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
       </div>
     </section>
   );

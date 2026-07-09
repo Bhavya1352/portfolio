@@ -70,8 +70,8 @@ const About = () => {
       <div className="container mx-auto max-w-5xl">
         {/* Section heading */}
         <div className="about-heading mb-8 sm:mb-10 md:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight text-foreground">
-            Beyond the <span className="font-serif italic font-semibold text-primary">Resume</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
+            Beyond the <span className="font-serif italic font-bold text-primary">Resume</span>
           </h2>
           <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
         </div>
@@ -79,8 +79,8 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 sm:gap-8 md:gap-12 items-start">
           {/* Left – bio */}
           <div className="about-bio md:col-span-3 min-w-0 order-2 md:order-1">
-            <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed text-sm sm:text-base font-medium">
-              <p className="text-foreground font-serif italic text-base sm:text-lg md:text-xl">
+            <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed text-sm sm:text-base font-semibold">
+              <p className="text-foreground font-serif italic text-base sm:text-lg md:text-xl font-semibold">
                 Behind every clean UI is a commit history I'd rather not show you.
               </p>
               <p>

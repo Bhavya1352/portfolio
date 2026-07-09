@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 300 19% 5%;
-    --foreground: 347 100% 98%;
+    --background: 180 25% 90%;
+    --foreground: 0 0% 20%;
 
-    --card: 300 13% 9%;
-    --card-foreground: 347 100% 98%;
+    --card: 180 20% 95%;
+    --card-foreground: 0 0% 20%;
 
-    --popover: 300 19% 5%;
-    --popover-foreground: 347 100% 98%;
+    --popover: 180 25% 90%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 348 48% 44%;
-    --primary-foreground: 347 100% 98%;
+    --primary: 25 80% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 300 10% 12%;
-    --secondary-foreground: 347 100% 98%;
+    --secondary: 180 15% 85%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 300 10% 12%;
-    --muted-foreground: 340 15% 55%;
+    --muted: 180 15% 85%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 345 67% 66%;
-    --accent-foreground: 347 100% 98%;
+    --accent: 180 60% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 300 10% 14%;
-    --input: 300 10% 14%;
-    --ring: 348 48% 44%;
+    --border: 180 15% 80%;
+    --input: 180 15% 80%;
+    --ring: 25 80% 55%;
 
     --radius: 0.75rem;
   }
@@ -42,7 +42,10 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    background: #E6AE8C;
+    background: -webkit-linear-gradient(to right, #A8CECF, #E6AE8C);
+    background: linear-gradient(to right, #A8CECF, #E6AE8C);
+    @apply text-foreground antialiased overflow-x-hidden;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
@@ -95,10 +98,10 @@
 
 @layer utilities {
   .aurora-bg {
-    background: radial-gradient(circle at 50% 20%, rgba(166, 58, 80, 0.12) 0%, transparent 60%),
-      radial-gradient(circle at 10% 40%, rgba(100, 20, 40, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(226, 109, 138, 0.06) 0%, transparent 50%),
-      hsl(var(--background));
+    background: radial-gradient(circle at 50% 20%, rgba(166, 58, 80, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 10% 40%, rgba(100, 20, 40, 0.1) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(226, 109, 138, 0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #A8CECF 0%, #E6AE8C 100%);
   }
 
   .grid-lines {
@@ -122,7 +125,22 @@
   }
 
   .text-gradient {
-    @apply text-primary;
+    background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+  }
+
+  .bg-gradient-secondary {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
+  }
+
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 50%, #f43f5e 100%);
   }
 
   .animate-fade-up {

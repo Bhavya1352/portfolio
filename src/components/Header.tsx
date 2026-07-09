@@ -24,9 +24,12 @@ const Header = () => {
       const currentY = window.scrollY;
       setIsScrolled(currentY > 20);
 
-      // Hide on scroll down, show on scroll up (only after 300px)
-      if (currentY > 300) {
-        setIsHidden(currentY > lastScrollY.current && currentY - lastScrollY.current > 5);
+      // Hide completely when scrolled past the hero section
+      const heroElement = document.getElementById('hero');
+      const heroHeight = heroElement ? heroElement.offsetHeight : window.innerHeight;
+
+      if (currentY > heroHeight - 80) {
+        setIsHidden(true);
       } else {
         setIsHidden(false);
       }
@@ -105,7 +108,7 @@ const Header = () => {
         <div className="flex justify-end items-center h-16 pointer-events-auto md:pointer-events-none">
           {/* Mobile toggle */}
           <button
-            className="md:hidden relative w-10 h-10 rounded-full border border-[#A63A50]/20 bg-[#1A141A]/60 backdrop-blur-md flex items-center justify-center text-[#FFF6F8]/60 hover:text-[#E26D8A] hover:border-[#E26D8A]/40 transition-all pointer-events-auto"
+            className="md:hidden relative w-10 h-10 rounded-full border border-border/80 bg-card/60 backdrop-blur-md flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-all pointer-events-auto"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -119,14 +122,14 @@ const Header = () => {
             ref={navRef}
             className={`relative inline-flex items-center gap-0.5 px-1.5 py-1.5 rounded-full transition-all duration-500 ${
               isScrolled
-                ? 'bg-[#1A141A]/80 backdrop-blur-xl border border-[#A63A50]/15 shadow-xl shadow-black/20'
-                : 'bg-[#1A141A]/40 backdrop-blur-md border border-[#A63A50]/10'
+                ? 'bg-card/80 backdrop-blur-xl border border-border/80 shadow-xl shadow-black/5'
+                : 'bg-card/40 backdrop-blur-md border border-border/40'
             }`}
           >
             {/* Sliding pill indicator */}
             <div
               ref={indicatorRef}
-              className="absolute top-1.5 left-0 h-[calc(100%-12px)] rounded-full bg-[#A63A50]/15 border border-[#A63A50]/25 pointer-events-none opacity-0"
+              className="absolute top-1.5 left-0 h-[calc(100%-12px)] rounded-full bg-primary/10 border border-primary/20 pointer-events-none opacity-0"
               style={{ willChange: 'transform, width' }}
             />
 
@@ -136,8 +139,8 @@ const Header = () => {
                 href={link.href}
                 className={`relative z-10 px-4 py-2 text-[11px] uppercase font-bold tracking-[0.15em] transition-colors duration-300 magnetic-item rounded-full ${
                   activeSection === link.href
-                    ? 'text-[#E26D8A]'
-                    : 'text-[#FFF6F8]/40 hover:text-[#FFF6F8]/80'
+                    ? 'text-primary'
+                    : 'text-foreground/60 hover:text-foreground/90'
                 }`}
               >
                 {link.label}
@@ -145,12 +148,12 @@ const Header = () => {
             ))}
 
             {/* Divider */}
-            <div className="w-px h-5 bg-[#A63A50]/20 mx-1" />
+            <div className="w-px h-5 bg-border/40 mx-1" />
 
             {/* CTA */}
             <a
               href="#contact"
-              className="relative z-10 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#A63A50] text-[#FFF6F8] text-[11px] uppercase font-bold tracking-wider hover:bg-[#A63A50]/80 transition-all shadow-md shadow-[#A63A50]/20 magnetic-item"
+              className="relative z-10 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-primary-foreground text-[11px] uppercase font-bold tracking-wider hover:bg-primary/90 transition-all shadow-md shadow-primary/20 magnetic-item"
             >
               Let's Talk
               <ArrowUpRight className="w-3 h-3" />
@@ -164,7 +167,7 @@ const Header = () => {
             isMobileMenuOpen ? 'max-h-96 pb-6' : 'max-h-0'
           }`}
         >
-          <div className="mt-2 p-4 rounded-2xl bg-[#1A141A]/90 backdrop-blur-xl border border-[#A63A50]/15 flex flex-col gap-1">
+          <div className="mt-2 p-4 rounded-2xl bg-card/95 backdrop-blur-xl border border-border/80 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -172,18 +175,18 @@ const Header = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
                   activeSection === link.href
-                    ? 'text-[#E26D8A] bg-[#A63A50]/10'
-                    : 'text-[#FFF6F8]/50 hover:text-[#FFF6F8] hover:bg-[#A63A50]/5'
+                    ? 'text-primary bg-primary/10'
+                    : 'text-foreground/60 hover:text-foreground/90 hover:bg-primary/5'
                 }`}
               >
                 {link.label}
               </a>
             ))}
-            <div className="w-full h-px bg-[#A63A50]/15 my-2" />
+            <div className="w-full h-px bg-border/40 my-2" />
             <a
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl bg-[#A63A50] text-[#FFF6F8] text-sm font-semibold hover:bg-[#A63A50]/80 transition-all"
+              className="inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-all"
             >
               Let's Talk
               <ArrowUpRight className="w-3.5 h-3.5" />
