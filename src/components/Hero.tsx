@@ -27,6 +27,7 @@ const TypewrittenCode = () => {
       setTypedText(fullText.slice(0, i));
       i++;
       if (i > fullText.length) {
+        setTypedText(fullText); // ensure complete code is set at end
         clearInterval(interval);
       }
     }, 25);
@@ -34,7 +35,7 @@ const TypewrittenCode = () => {
   }, []);
 
   return (
-    <pre className="font-mono text-xs sm:text-sm leading-relaxed text-[#FFF6F8]/70 p-4 select-none whitespace-pre-wrap overflow-hidden text-left">
+    <pre className="font-mono text-xs sm:text-sm leading-relaxed text-zinc-600 p-4 select-none whitespace-pre-wrap overflow-hidden text-left">
       <code>
         {/* We format the typing string dynamically with colors */}
         {typedText.split("\n").map((line, idx) => {
@@ -42,9 +43,9 @@ const TypewrittenCode = () => {
           if (line.includes("const")) {
             return (
               <div key={idx}>
-                <span className="text-[#E26D8A]">const</span>{" "}
-                <span className="text-[#FFF6F8]">developer</span> ={" "}
-                <span className="text-zinc-400">{"{"}</span>
+                <span className="text-[#E26D8A] font-medium">const</span>{" "}
+                <span className="text-zinc-800 font-medium">developer</span> ={" "}
+                <span className="text-zinc-500">{"{"}</span>
               </div>
             );
           }
@@ -52,8 +53,8 @@ const TypewrittenCode = () => {
             return (
               <div key={idx}>
                 {"  "}
-                <span className="text-[#E26D8A]/80">name</span>:{" "}
-                <span className="text-[#A63A50]">"Bhavya Mishra"</span>,
+                <span className="text-[#E26D8A]/80 font-medium">name</span>:{" "}
+                <span className="text-[#A63A50] font-medium">"Bhavya Mishra"</span>,
               </div>
             );
           }
@@ -61,8 +62,8 @@ const TypewrittenCode = () => {
             return (
               <div key={idx}>
                 {"  "}
-                <span className="text-[#E26D8A]/80">role</span>:{" "}
-                <span className="text-[#A63A50]">"Web Developer"</span>,
+                <span className="text-[#E26D8A]/80 font-medium">role</span>:{" "}
+                <span className="text-[#A63A50] font-medium">"Web Developer"</span>,
               </div>
             );
           }
@@ -70,8 +71,8 @@ const TypewrittenCode = () => {
             return (
               <div key={idx}>
                 {"  "}
-                <span className="text-[#E26D8A]/80">skills</span>:{" "}
-                <span className="text-zinc-400">{"{"}</span>
+                <span className="text-[#E26D8A]/80 font-medium">skills</span>:{" "}
+                <span className="text-zinc-500">{"{"}</span>
               </div>
             );
           }
@@ -79,8 +80,8 @@ const TypewrittenCode = () => {
             return (
               <div key={idx}>
                 {"    "}
-                <span className="text-[#E26D8A]/80">react</span>:{" "}
-                <span className="text-[#FFF6F8]/60">true</span>,
+                <span className="text-[#E26D8A]/80 font-medium">react</span>:{" "}
+                <span className="text-primary font-semibold">true</span>,
               </div>
             );
           }
@@ -88,8 +89,8 @@ const TypewrittenCode = () => {
             return (
               <div key={idx}>
                 {"    "}
-                <span className="text-[#E26D8A]/80">typescript</span>:{" "}
-                <span className="text-[#FFF6F8]/60">true</span>,
+                <span className="text-[#E26D8A]/80 font-medium">typescript</span>:{" "}
+                <span className="text-primary font-semibold">true</span>,
               </div>
             );
           }
@@ -97,8 +98,8 @@ const TypewrittenCode = () => {
             return (
               <div key={idx}>
                 {"    "}
-                <span className="text-[#E26D8A]/80">tailwindcss</span>:{" "}
-                <span className="text-[#FFF6F8]/60">true</span>
+                <span className="text-[#E26D8A]/80 font-medium">tailwindcss</span>:{" "}
+                <span className="text-primary font-semibold">true</span>
               </div>
             );
           }
@@ -106,7 +107,7 @@ const TypewrittenCode = () => {
             return (
               <div key={idx}>
                 {"  "}
-                <span className="text-zinc-400">{"},"}</span>
+                <span className="text-zinc-500">{"},"}</span>
               </div>
             );
           }
@@ -114,15 +115,15 @@ const TypewrittenCode = () => {
             return (
               <div key={idx}>
                 {"  "}
-                <span className="text-[#E26D8A]/80">lovesCoding</span>:{" "}
-                <span className="text-[#FFF6F8]/60">true</span>
+                <span className="text-[#E26D8A]/80 font-medium">lovesCoding</span>:{" "}
+                <span className="text-primary font-semibold">true</span>
               </div>
             );
           }
           if (line.includes("};")) {
             return (
               <div key={idx}>
-                <span className="text-zinc-400">{"};"}</span>
+                <span className="text-zinc-500">{"};"}</span>
               </div>
             );
           }
