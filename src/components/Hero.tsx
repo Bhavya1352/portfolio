@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Github, Linkedin, Mail, ArrowUpRight, Pin, Sparkles, FolderGit2 } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, Sparkles, FolderGit2 } from "lucide-react";
 import gsap from "gsap";
 
 const techStack = [
@@ -273,11 +273,11 @@ const Hero = () => {
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-background/40 to-background/80 pointer-events-none" />
 
       {/* Main Grid Wrapper */}
-      <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6 flex-grow flex items-center pt-8 sm:pt-12 md:pt-16 pb-4 sm:pb-6 md:pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center w-full">
+      <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6 flex-grow flex items-center pt-8 sm:pt-12 lg:pt-16 pb-4 sm:pb-6 lg:pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center w-full">
 
           {/* LEFT: Floating VS Code Card */}
-          <div className="md:col-span-3 flex justify-center order-2 md:order-1 pb-8 md:pb-0">
+          <div className="lg:col-span-3 flex justify-center order-2 lg:order-1 pb-8 lg:pb-0">
             <div
               ref={leftCardRef}
               className="relative w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] rounded-xl border border-primary/20 bg-card/80 backdrop-blur-xl shadow-2xl p-0.5 overflow-hidden group hover:border-primary/40 transition-colors duration-500"
@@ -305,7 +305,7 @@ const Hero = () => {
           {/* CENTER: Typography, Description & Buttons */}
           <div
             ref={centerTextRef}
-            className="md:col-span-6 text-center flex flex-col items-center space-y-3 sm:space-y-4 md:space-y-6 order-1 md:order-2 px-2 pb-8 md:pb-0"
+            className="lg:col-span-6 text-center flex flex-col items-center space-y-3 sm:space-y-4 lg:space-y-6 order-1 lg:order-2 px-2 pb-8 lg:pb-0"
           >
             {/* Pill Badge */}
             <div className="hero-entrance-reveal inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 shadow-inner">
@@ -330,7 +330,7 @@ const Hero = () => {
 
 
             {/* Personal philosophy */}
-            <p className="hero-entrance-reveal text-[11px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed max-w-md font-semibold px-2">
+            <p className="hero-entrance-reveal text-[11px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed max-w-md px-2">
               I build fast, accessible, and intuitive web applications with React, TypeScript, and modern frontend technologies — focusing on performance, usability, and the details that make products feel polished.
             </p>
 
@@ -374,19 +374,16 @@ const Hero = () => {
           </div>
 
           {/* RIGHT: Polaroid Image & Floating Experience Card */}
-          <div className="md:col-span-3 flex flex-col items-center gap-4 sm:gap-6 order-3 pb-12 md:pb-0">
+          <div className="lg:col-span-3 flex flex-col items-center gap-4 sm:gap-6 order-3 pb-12 lg:pb-0">
             <div ref={rightWrapRef} className="relative flex flex-col items-center w-full max-w-[240px] sm:max-w-[280px]">
 
               {/* Polaroid Frame */}
               <div className="relative w-full p-3 sm:p-4 pb-6 sm:pb-8 bg-card border border-primary/15 rounded-xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
-                <div className="absolute top-2 left-2 text-zinc-700 opacity-60">
-                  <Pin className="w-3.5 h-3.5 sm:w-4 sm:h-4 rotate-12" />
-                </div>
 
                 {/* Photo container */}
-                <div className="w-full aspect-square rounded-lg bg-background overflow-hidden mb-3 sm:mb-4 border border-primary/10">
+                <div className="w-full aspect-[3/4] rounded-lg bg-background overflow-hidden mb-3 sm:mb-4 border border-primary/10">
                   <img
-                    src="/PROFILE.jpg.jpeg"
+                    src="/hero-right.jpeg"
                     alt="Bhavya Mishra Portrait"
                     className="w-full h-full object-cover brightness-95 contrast-125 transition-all duration-750"
                   />
@@ -395,7 +392,7 @@ const Hero = () => {
               </div>
 
               {/* Floating Experience Card below Polaroid */}
-              <div className="absolute -bottom-8 sm:-bottom-10 -left-4 sm:-left-6 w-56 sm:w-64 p-3 sm:p-4 rounded-xl border border-primary/15 bg-card/90 backdrop-blur-md shadow-2xl flex items-center justify-between gap-2 sm:gap-3 hover:border-primary/40 transition-colors duration-500">
+              <div className="absolute -bottom-8 sm:-bottom-10 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:-left-6 w-[90%] sm:w-64 p-3 sm:p-4 rounded-xl border border-primary/15 bg-card/90 backdrop-blur-md shadow-2xl flex items-center justify-between gap-2 sm:gap-3 hover:border-primary/40 transition-colors duration-500">
                 <div className="flex items-center gap-2.5 sm:gap-3.5">
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
                     <FolderGit2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />

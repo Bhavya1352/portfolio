@@ -103,7 +103,7 @@ const Experience = () => {
 
                 <p className="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-muted-foreground">{exp.period}</p>
 
-                <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl font-semibold">
+                <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
                   {exp.description}
                 </p>
 

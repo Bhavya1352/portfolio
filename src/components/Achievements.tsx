@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Trophy, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Card, CardContent } from "@/components/ui/card";
 
 const achievements = [
   {
@@ -77,44 +78,46 @@ const Achievements = () => {
 
         <div className="achievements-list grid grid-cols-1 gap-4 sm:gap-6">
           {achievements.map((item) => (
-            <div
+            <Card
               key={item.title}
-              className="achievement-card group relative p-4 sm:p-6 md:p-8 rounded-2xl bg-card border border-border/80 shadow-xl hover:border-primary/40 transition-colors duration-300 magnetic-item"
+              className="achievement-card group relative rounded-2xl bg-card border border-border/80 shadow-xl hover:border-primary/40 transition-colors duration-300 magnetic-item"
             >
-              {/* Badge */}
-              <div className="flex items-center gap-2 mb-3 sm:mb-4 sm:absolute sm:top-4 sm:top-6 sm:right-4 sm:right-6 sm:mb-0">
-                <div className="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/25">
-                  <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary" />
-                  <span className="text-[9px] sm:text-[10px] uppercase font-bold text-primary tracking-wider">{item.badge}</span>
-                </div>
-              </div>
-
-              <div className="space-y-3 sm:space-y-4">
-                <div>
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-semibold text-foreground leading-snug">{item.title}</h3>
-                  <p className="text-xs sm:text-sm font-semibold text-primary mt-1">{item.event}</p>
+              <CardContent className="p-4 sm:p-6 md:p-8 space-y-3 sm:space-y-4">
+                {/* Badge */}
+                <div className="flex items-center gap-2 mb-3 sm:mb-4 sm:absolute sm:top-6 sm:right-6 sm:mb-0">
+                  <div className="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/25">
+                    <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary" />
+                    <span className="text-[9px] sm:text-[10px] uppercase font-bold text-primary tracking-wider">{item.badge}</span>
+                  </div>
                 </div>
 
-                <p className="text-[10px] sm:text-xs uppercase tracking-wider font-bold text-muted-foreground">
-                  {item.track} &middot; {item.period}
-                </p>
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="sm:pr-28">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-semibold text-foreground leading-snug">{item.title}</h3>
+                    <p className="text-xs sm:text-sm font-semibold text-primary mt-1">{item.event}</p>
+                  </div>
 
-                <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
-                  {item.description}
-                </p>
+                  <p className="text-[10px] sm:text-xs uppercase tracking-wider font-bold text-muted-foreground">
+                    {item.track} &middot; {item.period}
+                  </p>
 
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
-                  {item.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest px-2 sm:px-3 py-1 rounded-lg bg-background border border-border/80 text-muted-foreground hover:text-foreground transition-colors duration-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
+                    {item.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest px-2 sm:px-3 py-1 rounded-lg bg-background border border-border/80 text-muted-foreground hover:text-foreground transition-colors duration-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 

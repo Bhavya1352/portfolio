@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { GraduationCap, MapPin, Code2 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -79,8 +80,8 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 sm:gap-8 md:gap-12 items-start">
           {/* Left – bio */}
           <div className="about-bio md:col-span-3 min-w-0 order-2 md:order-1">
-            <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed text-sm sm:text-base font-semibold">
-              <p className="text-foreground font-serif italic text-base sm:text-lg md:text-xl font-semibold">
+            <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed text-sm sm:text-base">
+              <p className="text-foreground font-serif italic text-base sm:text-lg md:text-xl font-medium">
                 Behind every clean UI is a commit history I'd rather not show you.
               </p>
               <p>
@@ -108,23 +109,25 @@ const About = () => {
 
           {/* Right – quick facts */}
           <div className="about-facts md:col-span-2 min-w-0 order-1 md:order-2">
-            <div className="p-4 sm:p-6 rounded-2xl bg-card border border-border/85 shadow-xl space-y-4 sm:space-y-5">
-              {[
-                { icon: GraduationCap, label: "Studying", value: "ECE, JSSATE Noida" },
-                { icon: MapPin, label: "Based in", value: "Noida, India" },
-                { icon: Code2, label: "Focus", value: "Frontend / React" },
-              ].map((item) => (
-                <div key={item.label} className="flex items-start gap-3 sm:gap-4 hover-lift magnetic-item">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 border border-primary/25">
-                    <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+            <Card className="rounded-2xl bg-card border border-border/85 shadow-xl">
+              <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-5">
+                {[
+                  { icon: GraduationCap, label: "Studying", value: "ECE, JSSATE Noida" },
+                  { icon: MapPin, label: "Based in", value: "Noida, India" },
+                  { icon: Code2, label: "Focus", value: "Frontend / React" },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-start gap-3 sm:gap-4 hover-lift magnetic-item">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 border border-primary/25">
+                      <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-muted-foreground">{item.label}</p>
+                      <p className="text-xs sm:text-sm md:text-base font-bold text-foreground mt-0.5">{item.value}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-muted-foreground">{item.label}</p>
-                    <p className="text-xs sm:text-sm md:text-base font-bold text-foreground mt-0.5">{item.value}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

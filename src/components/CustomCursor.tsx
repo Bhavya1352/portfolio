@@ -8,7 +8,8 @@ const CustomCursor = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined" || window.innerWidth < 768) return;
+    const isTouchDevice = typeof window !== "undefined" && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    if (typeof window === "undefined" || window.innerWidth < 1024 || isTouchDevice) return;
 
     const dot = dotRef.current;
     const ring = ringRef.current;
@@ -104,7 +105,8 @@ const CustomCursor = () => {
     };
   }, []);
 
-  if (typeof window !== "undefined" && window.innerWidth < 768) return null;
+  const isTouchDevice = typeof window !== "undefined" && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  if (typeof window !== "undefined" && (window.innerWidth < 1024 || isTouchDevice)) return null;
 
   return (
     <>
