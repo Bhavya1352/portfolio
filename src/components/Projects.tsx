@@ -14,38 +14,38 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const projects = [
   {
-    title: "Quiz App",
+    title: "AI Collaborative Code Editor",
     description:
-      "Interactive quiz application with topic-based questions, score tracking, and a clean responsive interface.",
-    link: "https://quiz-app-delta-pearl-16.vercel.app/",
-    tech: ["React", "JavaScript", "CSS3"],
-    image: "/quiz-app.webp",
+      "Real-time collaborative code editor with AI-powered suggestions, syntax highlighting, and seamless team collaboration features.",
+    link: "#",
+    tech: ["React", "TypeScript", "AI/ML"],
+    image: "/ai-code-editor.png",
     caseStudy: {
-      problem: "Users often want a quick, engaging way to test their knowledge on various topics without running into complex registration barriers or confusing user interfaces.",
-      solution: "I developed a highly responsive quiz application that utilizes stateful React components to offer real-time scoring, visual feedback on answers, and topic selection.",
+      problem: "Development teams often struggle with real-time collaboration and code consistency across different environments, leading to merge conflicts and reduced productivity.",
+      solution: "I built an AI-powered collaborative code editor that enables real-time editing, intelligent code suggestions, and seamless team integration.",
       features: [
-        "Dynamic question selection across multiple web development topics.",
-        "Instant visual indicators for correct and incorrect answers.",
-        "Interactive score tracking and a clean summary screen.",
-        "Responsive, mobile-first design with smooth transitions."
+        "Real-time collaborative editing with live cursor tracking.",
+        "AI-powered code suggestions and auto-completion.",
+        "Syntax highlighting for multiple programming languages.",
+        "Integrated chat and code review features."
       ]
     }
   },
   {
-    title: "Mini Paint",
+    title: "AI Travel Planner",
     description:
-      "Browser-based drawing tool with adjustable brush sizes, color picker, and the ability to save artwork as images.",
-    link: "https://paint-app-coral.vercel.app/",
-    tech: ["Canvas API", "JavaScript", "HTML5"],
-    image: "/mini-paint.webp",
+      "Intelligent travel planning application that uses AI to create personalized itineraries, suggest destinations, and optimize travel routes.",
+    link: "#",
+    tech: ["React", "Node.js", "AI/ML"],
+    image: "/ai-travel-planner.png",
     caseStudy: {
-      problem: "Traditional desktop-based drawing apps require installation and can be heavy, while online alternatives are often cluttered with advertisements and complex options.",
-      solution: "I built a lightweight web drawing app using the HTML5 Canvas API. It focuses on absolute speed, ease of use, and quick exports.",
+      problem: "Travel planning is often time-consuming and overwhelming, with users struggling to find optimal routes, accommodations, and activities that match their preferences.",
+      solution: "I developed an AI-powered travel planner that analyzes user preferences and generates personalized, optimized travel itineraries automatically.",
       features: [
-        "Smooth drawing with responsive mouse and touch tracking.",
-        "Interactive tools including adjustable brush sizing and color pickers.",
-        "Clear canvas capability and direct local download as PNG.",
-        "Minimalist, distraction-free creative workspace interface."
+        "AI-powered destination recommendations based on preferences.",
+        "Automated itinerary generation with time optimization.",
+        "Real-time flight and accommodation integration.",
+        "Budget tracking and expense estimation."
       ]
     }
   },
