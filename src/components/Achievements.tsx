@@ -69,11 +69,12 @@ const Achievements = () => {
         
         {/* Section Heading */}
         <div className="achievements-heading mb-8 sm:mb-10 md:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight text-foreground flex items-center gap-2 sm:gap-3">
-            <span className="font-serif italic font-semibold text-primary">Achievements</span>
-            <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-primary animate-pulse" />
-          </h2>
-          <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
+          <div className="inline-block border-2 border-primary/30 bg-card/80 px-4 py-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight text-foreground flex items-center gap-2 sm:gap-3">
+              <span className="font-serif italic font-semibold text-primary">Achievements</span>
+              <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-primary animate-pulse" />
+            </h2>
+          </div>
         </div>
 
         <div className="achievements-list grid grid-cols-1 gap-4 sm:gap-6">

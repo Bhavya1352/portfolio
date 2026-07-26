@@ -63,8 +63,8 @@ const Sandbox = () => {
       <div className="container mx-auto max-w-5xl">
         <div className="mb-10 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light tracking-tight text-foreground flex items-center justify-center gap-2">
-            Creative <span className="font-serif italic font-semibold text-primary">Playground</span>
-            <Sparkles className="w-5 h-5 text-primary animate-pulse" />
+            Creative <span className="font-serif italic font-semibold text-foreground">Playground</span>
+            <Sparkles className="w-5 h-5 text-foreground animate-pulse" />
           </h2>
           <p className="text-sm text-muted-foreground mt-3 max-w-md mx-auto">
             A sandbox containing interactive notes, records, and snaps. Drag them around to clean the desktop!

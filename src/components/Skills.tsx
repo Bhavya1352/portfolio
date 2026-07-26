@@ -68,29 +68,30 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" ref={containerRef} className="py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 bg-card/25 dot-bg relative border-b border-border/40">
+    <section id="skills" ref={containerRef} className="py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24 px-2 xs:px-3 sm:px-4 md:px-6 bg-card/25 dot-bg relative border-b border-border/40">
       <div className="container mx-auto max-w-5xl">
         
         {/* Section Heading */}
-        <div className="skills-heading mb-8 sm:mb-10 md:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
-            Skills &amp; <span className="font-serif italic font-bold text-primary">Tech Stack</span>
-          </h2>
-          <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
+        <div className="skills-heading mb-6 xs:mb-8 sm:mb-10 md:mb-14">
+          <div className="inline-block border-2 border-primary/30 bg-card/80 px-4 py-2">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-sans font-bold tracking-tight text-foreground">
+              Skills &amp; <span className="font-sans font-bold text-primary">Tech Stack</span>
+            </h2>
+          </div>
         </div>
 
         {/* Skills Grid */}
-        <div className="skills-grid grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
+        <div className="skills-grid grid grid-cols-1 sm:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
           {skillGroups.map((group) => (
             <div key={group.title} className="skill-group min-w-0">
-              <h3 className="text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground font-bold mb-3 sm:mb-4">
+              <h3 className="text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground font-bold mb-2.5 xs:mb-3 sm:mb-4">
                 {group.title}
               </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-2.5">
+              <div className="flex flex-wrap gap-1.5 xs:gap-2 sm:gap-2.5">
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-xl bg-background border border-border/80 text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default shadow-sm select-none hover-lift magnetic-item"
+                    className="px-2.5 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 text-[10px] xs:text-xs sm:text-sm font-semibold rounded-xl bg-background border border-border/80 text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default shadow-sm select-none hover-lift magnetic-item"
                   >
                     {item}
                   </span>

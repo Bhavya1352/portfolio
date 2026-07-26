@@ -82,10 +82,11 @@ const Experience = () => {
         
         {/* Section Heading */}
         <div className="experience-heading mb-8 sm:mb-10 md:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
-            Professional <span className="font-serif italic font-bold text-primary">Experience</span>
-          </h2>
-          <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
+          <div className="inline-block border-2 border-primary/30 bg-card/80 px-4 py-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-sans font-bold tracking-tight text-foreground">
+              Professional <span className="font-sans font-bold text-primary">Experience</span>
+            </h2>
+          </div>
         </div>
 
         {/* Timeline */}

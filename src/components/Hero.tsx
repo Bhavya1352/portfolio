@@ -209,8 +209,11 @@ const Hero = () => {
         }
       });
 
-      // 2. Interactive Mouse Parallax (Multi-layered offsets)
+      // 2. Interactive Mouse Parallax (Multi-layered offsets) - Only on desktop
       const handleMouseMove = (e: MouseEvent) => {
+        // Disable parallax on mobile/tablet for better performance
+        if (window.innerWidth < 1024) return;
+
         const { clientX, clientY } = e;
         const xOffset = (clientX / window.innerWidth - 0.5);
         const yOffset = (clientY / window.innerHeight - 0.5);
@@ -263,7 +266,7 @@ const Hero = () => {
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-fit md:min-h-screen aurora-bg grid-lines stars-overlay flex flex-col justify-between overflow-visible md:overflow-hidden py-8 sm:py-12 md:py-20"
+      className="relative min-h-fit md:min-h-screen aurora-bg grid-lines stars-overlay flex flex-col justify-between overflow-visible md:overflow-hidden py-6 xs:py-8 sm:py-12 md:py-16 lg:py-20"
     >
       {/* Cinematic glow blobs */}
       <div className="hero-aurora-blob absolute top-1/4 left-4 sm:left-10 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] rounded-full bg-primary/20 blur-[100px] sm:blur-[130px] pointer-events-none" />
@@ -273,28 +276,28 @@ const Hero = () => {
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-background/40 to-background/80 pointer-events-none" />
 
       {/* Main Grid Wrapper */}
-      <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6 flex-grow flex items-center pt-8 sm:pt-12 lg:pt-16 pb-4 sm:pb-6 lg:pb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center w-full">
+      <div className="container relative z-10 mx-auto max-w-7xl px-2 xs:px-3 sm:px-4 md:px-6 flex-grow flex items-center pt-6 xs:pt-8 sm:pt-12 lg:pt-16 pb-3 xs:pb-4 sm:pb-6 lg:pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 xs:gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center w-full">
 
           {/* LEFT: Floating VS Code Card */}
-          <div className="lg:col-span-3 flex justify-center order-2 lg:order-1 pb-8 lg:pb-0">
+          <div className="lg:col-span-3 flex justify-center order-2 lg:order-1 pb-6 xs:pb-8 lg:pb-0">
             <div
               ref={leftCardRef}
-              className="relative w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] rounded-xl border border-primary/20 bg-card/80 backdrop-blur-xl shadow-2xl p-0.5 overflow-hidden group hover:border-primary/40 transition-colors duration-500"
+              className="relative w-full max-w-[200px] xs:max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[280px] xl:max-w-[320px] rounded-xl border border-primary/20 bg-card/80 backdrop-blur-xl shadow-2xl p-0.5 overflow-hidden group hover:border-primary/40 transition-colors duration-500"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Card glossy lighting highlight */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
 
               {/* Title bar */}
-              <div className="flex items-center justify-between px-4 py-3 border-b border-primary/10 bg-card/50">
+              <div className="flex items-center justify-between px-3 xs:px-4 py-2 xs:py-3 border-b border-primary/10 bg-card/50">
                 <div className="flex gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-[#FF5F56]" />
-                  <span className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
-                  <span className="w-3 h-3 rounded-full bg-[#27C93F]" />
+                  <span className="w-2.5 h-2.5 xs:w-3 xs:h-3 rounded-full bg-[#FF5F56]" />
+                  <span className="w-2.5 h-2.5 xs:w-3 xs:h-3 rounded-full bg-[#FFBD2E]" />
+                  <span className="w-2.5 h-2.5 xs:w-3 xs:h-3 rounded-full bg-[#27C93F]" />
                 </div>
-                <span className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase">developer.js</span>
-                <div className="w-8" />
+                <span className="text-[8px] xs:text-[10px] font-mono tracking-wider text-zinc-500 uppercase">developer.js</span>
+                <div className="w-6 xs:w-8" />
               </div>
 
               {/* Typed code body */}
@@ -305,55 +308,50 @@ const Hero = () => {
           {/* CENTER: Typography, Description & Buttons */}
           <div
             ref={centerTextRef}
-            className="lg:col-span-6 text-center flex flex-col items-center space-y-3 sm:space-y-4 lg:space-y-6 order-1 lg:order-2 px-2 pb-8 lg:pb-0"
+            className="lg:col-span-6 text-center flex flex-col items-center space-y-2 xs:space-y-3 sm:space-y-4 lg:space-y-6 order-1 lg:order-2 px-2 xs:px-3 pb-6 xs:pb-8 lg:pb-0"
           >
             {/* Pill Badge */}
-            <div className="hero-entrance-reveal inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 shadow-inner">
-              <span className="relative flex h-2.5 w-2.5">
+            <div className="hero-entrance-reveal inline-flex items-center gap-1.5 xs:gap-2 px-2.5 xs:px-3 sm:px-4 py-1 xs:py-1.5 rounded-full border border-primary/20 bg-primary/5 shadow-inner">
+              <span className="relative flex h-2 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
+                <span className="relative inline-flex rounded-full h-2 w-2.5 bg-primary" />
               </span>
-              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-primary">
+              <span className="text-[8px] xs:text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-primary">
                 Open for new opportunities
               </span>
             </div>
 
-            {/* Sub-heading label */}
-            <p className="hero-entrance-reveal text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold text-primary/80">
-              Designing Front-End Architectures
-            </p>
-
             {/* Huge Serif Name */}
-            <h1 className="hero-entrance-reveal text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-serif font-light tracking-tight text-foreground leading-[0.95]">
+            <h1 className="hero-entrance-reveal text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-serif font-light tracking-tight text-foreground leading-[0.95]">
               Bhavya Mishra
             </h1>
 
 
             {/* Personal philosophy */}
-            <p className="hero-entrance-reveal text-[11px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed max-w-md px-2">
-              I build fast, accessible, and intuitive web applications with React, TypeScript, and modern frontend technologies — focusing on performance, usability, and the details that make products feel polished.
+            <p className="hero-entrance-reveal text-[10px] xs:text-[11px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed max-w-md px-2">
+              I spend way too much time making pixels look perfect and fixing bugs that nobody else notices—but I love every minute of it.
             </p>
 
             {/* Buttons Row */}
-            <div className="hero-entrance-reveal flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
+            <div className="hero-entrance-reveal flex flex-col sm:flex-row items-center gap-2.5 xs:gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-primary text-primary-foreground font-bold text-xs sm:text-sm hover:bg-primary/80 transition-colors shadow-lg shadow-primary/20 magnetic-item w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 px-4 xs:px-5 sm:px-6 py-2 xs:py-2.5 sm:py-3 rounded-full bg-primary text-primary-foreground font-bold text-[10px] xs:text-xs sm:text-sm hover:bg-primary/80 transition-colors shadow-lg shadow-primary/20 magnetic-item w-full sm:w-auto"
               >
                 Get in Touch
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
               </button>
 
               <button
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-primary/20 hover:border-primary/50 text-foreground font-bold text-xs sm:text-sm transition-colors bg-card/50 backdrop-blur-sm magnetic-item w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 px-4 xs:px-5 sm:px-6 py-2 xs:py-2.5 sm:py-3 rounded-full border border-primary/20 hover:border-primary/50 text-foreground font-bold text-[10px] xs:text-xs sm:text-sm transition-colors bg-card/50 backdrop-blur-sm magnetic-item w-full sm:w-auto"
               >
                 Explore My Work
               </button>
             </div>
 
             {/* Social icons */}
-            <div className="hero-entrance-reveal flex items-center gap-3 sm:gap-4 pt-4">
+            <div className="hero-entrance-reveal flex items-center gap-2.5 xs:gap-3 sm:gap-4 pt-3 xs:pt-4">
               {[
                 { icon: Github, href: "https://github.com/Bhavya1352", label: "GitHub" },
                 { icon: Linkedin, href: "https://linkedin.com/in/bhavya-mishra-7a3b09324", label: "LinkedIn" },
@@ -364,24 +362,24 @@ const Hero = () => {
                   href={s.href}
                   target={s.label !== "Email" ? "_blank" : undefined}
                   rel={s.label !== "Email" ? "noopener noreferrer" : undefined}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-primary/20 bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all magnetic-item"
+                  className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 rounded-full border border-primary/20 bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all magnetic-item"
                   aria-label={s.label}
                 >
-                  <s.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <s.icon className="w-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4" />
                 </a>
               ))}
             </div>
           </div>
 
           {/* RIGHT: Polaroid Image & Floating Experience Card */}
-          <div className="lg:col-span-3 flex flex-col items-center gap-4 sm:gap-6 order-3 pb-12 lg:pb-0">
-            <div ref={rightWrapRef} className="relative flex flex-col items-center w-full max-w-[240px] sm:max-w-[280px]">
+          <div className="lg:col-span-3 flex flex-col items-center gap-3 xs:gap-4 sm:gap-6 order-3 pb-10 xs:pb-12 lg:pb-0">
+            <div ref={rightWrapRef} className="relative flex flex-col items-center w-full max-w-[180px] xs:max-w-[220px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[240px] xl:max-w-[280px]">
 
               {/* Polaroid Frame */}
-              <div className="relative w-full p-3 sm:p-4 pb-6 sm:pb-8 bg-card border border-primary/15 rounded-xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="relative w-full p-2.5 xs:p-3 sm:p-4 pb-5 xs:pb-6 sm:pb-8 bg-card border border-primary/15 rounded-xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
 
                 {/* Photo container */}
-                <div className="w-full aspect-[3/4] rounded-lg bg-background overflow-hidden mb-3 sm:mb-4 border border-primary/10">
+                <div className="w-full aspect-[3/4] rounded-lg bg-background overflow-hidden mb-2.5 xs:mb-3 sm:mb-4 border border-primary/10">
                   <img
                     src="/hero-right.jpeg"
                     alt="Bhavya Mishra Portrait"
@@ -392,17 +390,17 @@ const Hero = () => {
               </div>
 
               {/* Floating Experience Card below Polaroid */}
-              <div className="absolute -bottom-8 sm:-bottom-10 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:-left-6 w-[90%] sm:w-64 p-3 sm:p-4 rounded-xl border border-primary/15 bg-card/90 backdrop-blur-md shadow-2xl flex items-center justify-between gap-2 sm:gap-3 hover:border-primary/40 transition-colors duration-500">
-                <div className="flex items-center gap-2.5 sm:gap-3.5">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                    <FolderGit2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+              <div className="absolute -bottom-6 xs:-bottom-8 sm:-bottom-10 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:-left-6 w-[85%] xs:w-[90%] sm:w-64 p-2.5 xs:p-3 sm:p-4 rounded-xl border border-primary/15 bg-card/90 backdrop-blur-md shadow-2xl flex items-center justify-between gap-2 xs:gap-2.5 sm:gap-3 hover:border-primary/40 transition-colors duration-500 z-20">
+                <div className="flex items-center gap-2 xs:gap-2.5 sm:gap-3.5">
+                  <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                    <FolderGit2 className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
                   <div className="text-left">
-                    <h4 className="text-[9px] sm:text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Project Admin</h4>
-                    <p className="text-[10px] sm:text-xs font-bold text-foreground mt-0.5">at SSOC & GSSOC</p>
+                    <h4 className="text-[8px] xs:text-[9px] sm:text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Project Admin</h4>
+                    <p className="text-[9px] xs:text-[10px] sm:text-xs font-bold text-foreground mt-0.5">at SSOC & GSSOC</p>
                   </div>
                 </div>
-                <div className="px-1.5 sm:px-2 py-1 rounded bg-primary/15 border border-primary/25 text-[8px] sm:text-[9px] font-bold text-primary uppercase tracking-wider">
+                <div className="px-1.5 xs:px-2 py-1 rounded bg-primary/15 border border-primary/25 text-[7px] xs:text-[8px] sm:text-[9px] font-bold text-primary uppercase tracking-wider">
                   2025
                 </div>
               </div>
@@ -414,21 +412,21 @@ const Hero = () => {
       </div>
 
       {/* BOTTOM: Tech Stack Marquee */}
-      <div className="relative border-t border-primary/10 bg-background/60 backdrop-blur-[2px] py-4 overflow-hidden select-none">
+      <div className="relative border-t border-primary/10 bg-background/60 backdrop-blur-[2px] py-3 xs:py-4 overflow-hidden select-none">
         <div className="marquee-track">
           {[...techStack, ...techStack].map((tech, i) => (
             <span
               key={i}
-              className="mx-8 text-[10px] uppercase font-bold tracking-widest text-muted-foreground flex items-center gap-3"
+              className="mx-6 xs:mx-8 text-[8px] xs:text-[10px] uppercase font-bold tracking-widest text-muted-foreground flex items-center gap-2 xs:gap-3"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              <span className="w-1 h-1.5 xs:w-1.5 xs:h-1.5 rounded-full bg-primary" />
               {tech}
             </span>
           ))}
         </div>
         {/* Gradients to blend marquee edges */}
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 left-0 w-16 xs:w-24 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-16 xs:w-24 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
       </div>
     </section>
   );

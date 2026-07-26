@@ -122,11 +122,12 @@ const Contact = () => {
             }`}
           >
             <div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
-                Let's <span className="font-serif italic font-bold text-primary">Connect</span>
-              </h2>
-              <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
-              <p className="text-muted-foreground mt-4 text-sm sm:text-base leading-relaxed font-normal">
+              <div className="inline-block border-2 border-primary/30 bg-card/80 px-4 py-2 mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
+                  Let's <span className="font-serif italic font-bold text-foreground">Connect</span>
+                </h2>
+              </div>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed font-normal">
                 If you prefer narrative paragraphs over boring forms, use this builder. Otherwise, feel free to drop a line directly!
               </p>
             </div>
@@ -184,7 +185,7 @@ const Contact = () => {
                         placeholder="your name"
                         required
                         disabled={isSubmitting}
-                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[8rem] sm:max-w-[11rem] font-serif italic text-primary"
+                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[8rem] sm:max-w-[11rem] font-serif italic"
                       />
                       , and I am interested in collaborating with you on a{" "}
                       <input
@@ -195,7 +196,7 @@ const Contact = () => {
                         placeholder="web development"
                         required
                         disabled={isSubmitting}
-                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[10rem] sm:max-w-[13rem] font-serif italic text-primary"
+                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[10rem] sm:max-w-[13rem] font-serif italic"
                       />{" "}
                       project. You can reach out to me at my email address{" "}
                       <input
@@ -206,7 +207,7 @@ const Contact = () => {
                         placeholder="your email address"
                         required
                         disabled={isSubmitting}
-                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[11rem] sm:max-w-[15rem] font-serif italic text-primary"
+                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[11rem] sm:max-w-[15rem] font-serif italic"
                       />
                       . Here is a brief detail of what I am thinking:{" "}
                       <textarea
@@ -217,7 +218,7 @@ const Contact = () => {
                         rows={2}
                         required
                         disabled={isSubmitting}
-                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-1 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full resize-none font-serif italic text-primary mt-3 block h-auto align-bottom leading-relaxed"
+                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-1 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full resize-none font-serif italic mt-3 block h-auto align-bottom leading-relaxed"
                       />
                     </div>
                   </div>

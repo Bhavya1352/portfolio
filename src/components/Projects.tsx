@@ -18,8 +18,9 @@ const projects = [
     description:
       "Real-time collaborative code editor with AI-powered suggestions, syntax highlighting, and seamless team collaboration features.",
     link: "#",
-    tech: ["React", "TypeScript", "AI/ML"],
+    tech: ["React.js", "TypeScript", "CSS"],
     image: "/ai-code-editor.png",
+    badge: "Most Challenging",
     caseStudy: {
       problem: "Development teams often struggle with real-time collaboration and code consistency across different environments, leading to merge conflicts and reduced productivity.",
       solution: "I built an AI-powered collaborative code editor that enables real-time editing, intelligent code suggestions, and seamless team integration.",
@@ -28,6 +29,11 @@ const projects = [
         "AI-powered code suggestions and auto-completion.",
         "Syntax highlighting for multiple programming languages.",
         "Integrated chat and code review features."
+      ],
+      learnings: [
+        "Learned WebSocket integration for real-time features.",
+        "Understood operational transformation for conflict resolution.",
+        "Improved state management in complex collaborative scenarios."
       ]
     }
   },
@@ -36,8 +42,9 @@ const projects = [
     description:
       "Intelligent travel planning application that uses AI to create personalized itineraries, suggest destinations, and optimize travel routes.",
     link: "#",
-    tech: ["React", "Node.js", "AI/ML"],
+    tech: ["React.js", "JavaScript", "Tailwind CSS"],
     image: "/ai-travel-planner.png",
+    badge: "Favorite ❤️",
     caseStudy: {
       problem: "Travel planning is often time-consuming and overwhelming, with users struggling to find optimal routes, accommodations, and activities that match their preferences.",
       solution: "I developed an AI-powered travel planner that analyzes user preferences and generates personalized, optimized travel itineraries automatically.",
@@ -46,6 +53,11 @@ const projects = [
         "Automated itinerary generation with time optimization.",
         "Real-time flight and accommodation integration.",
         "Budget tracking and expense estimation."
+      ],
+      learnings: [
+        "Gained experience with API integration for travel data.",
+        "Learned optimization algorithms for route planning.",
+        "Improved UX design for complex decision-making interfaces."
       ]
     }
   },
@@ -54,8 +66,9 @@ const projects = [
     description:
       "Platform for creating and managing events with customizable pages, attendee tracking, and payment integration.",
     link: "https://event-site-beta.vercel.app/",
-    tech: ["React", "Node.js", "MongoDB"],
+    tech: ["React.js", "TypeScript", "Tailwind CSS"],
     image: "/event-maker.webp",
+    badge: "Featured",
     caseStudy: {
       problem: "Event organizers often struggle to find simple systems to create custom landing pages and register guests without high platform fees.",
       solution: "I built Event Maker to serve as a self-hosted alternative. It provides clean templates, simple guest registration, and dashboard overview metrics.",
@@ -64,6 +77,11 @@ const projects = [
         "Guest list management and database attendee registration.",
         "Comprehensive dashboard displaying RSVPs and event metrics.",
         "Secure backend REST API with structured MongoDB collections."
+      ],
+      learnings: [
+        "Learned full-stack development with MongoDB integration.",
+        "Understood authentication and authorization patterns.",
+        "Improved database schema design for scalability."
       ]
     }
   },
@@ -72,8 +90,9 @@ const projects = [
     description:
       "Open-source platform to discover local events on the map. Find and share community events happening around you, connect with people who share your interests, and never miss out on what's happening nearby.",
     link: "https://eventmappr.vercel.app/",
-    tech: ["React", "JavaScript", "Maps API"],
+    tech: ["React.js", "JavaScript", "HTML5", "CSS3"],
     image: "/eventmappr.webp",
+    badge: "Open Source",
     caseStudy: {
       problem: "People often miss local events because standard directory listings are presented in textual feeds rather than geographic clusters that show proximity.",
       solution: "I created EventMappr to overlay local community meetups on interactive maps, letting users discover gatherings visually by neighborhood.",
@@ -82,6 +101,11 @@ const projects = [
         "Geographic filtering to locate meetups within specific radius scales.",
         "Community posting capabilities to allow local users to add pin events.",
         "Responsive routing and map synchronization using modern APIs."
+      ],
+      learnings: [
+        "Learned Maps API integration and geolocation services.",
+        "Understood spatial data visualization patterns.",
+        "Improved performance optimization for map rendering."
       ]
     }
   },
@@ -103,45 +127,50 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             loading="lazy"
           />
+          {project.badge && (
+            <div className="absolute top-2 right-2 px-2 py-1 rounded-md bg-primary/90 backdrop-blur-sm text-white text-[8px] xs:text-[9px] sm:text-[10px] font-bold uppercase tracking-wider shadow-lg">
+              {project.badge}
+            </div>
+          )}
         </div>
 
         {/* Content wrapper */}
-        <CardContent className="flex flex-col p-4 sm:p-6 flex-grow">
-          <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-3 sm:mb-4">
+        <CardContent className="flex flex-col p-3 xs:p-4 sm:p-6 flex-grow">
+          <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-1.5 mb-2.5 xs:mb-3 sm:mb-4">
             {project.tech.map((t) => (
               <span
                 key={t}
-                className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest px-1.5 sm:px-2 py-0.5 rounded bg-primary/10 text-primary"
+                className="text-[8px] xs:text-[9px] sm:text-[10px] uppercase font-bold tracking-widest px-1 xs:px-1.5 sm:px-2 py-0.5 rounded bg-primary/10 text-primary"
               >
                 {t}
               </span>
             ))}
           </div>
 
-          <h3 className="text-base sm:text-lg font-serif font-bold text-foreground mb-1.5 sm:mb-2 hover:text-primary transition-colors">
+          <h3 className="text-sm xs:text-base sm:text-lg font-serif font-bold text-foreground mb-1 xs:mb-1.5 sm:mb-2 hover:text-primary transition-colors">
             {project.title}
           </h3>
 
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed flex-grow mb-4 sm:mb-6 font-normal">
+          <p className="text-[11px] xs:text-xs sm:text-sm text-muted-foreground leading-relaxed flex-grow mb-3 xs:mb-4 sm:mb-6 font-normal">
             {project.description}
           </p>
 
-          <div className="flex items-center justify-between gap-3 mt-auto w-full">
+          <div className="flex items-center justify-between gap-2 xs:gap-3 mt-auto w-full">
             <button
               onClick={() => setIsOpen(true)}
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-primary hover:underline hover:text-primary/80 transition-colors"
+              className="inline-flex items-center gap-1 xs:gap-1.5 text-[10px] xs:text-xs sm:text-sm font-bold text-primary hover:underline hover:text-primary/80 transition-colors"
             >
-              <BookOpen className="w-3.5 h-3.5" />
+              <BookOpen className="w-3 xs:w-3.5 h-3.5" />
               Case Study
             </button>
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-1 xs:gap-1.5 text-[10px] xs:text-xs sm:text-sm font-bold text-muted-foreground hover:text-foreground transition-colors"
             >
               Live Site
-              <ExternalLink className="w-3.5 h-3.5" />
+              <ExternalLink className="w-3 xs:w-3.5 h-3.5" />
             </a>
           </div>
         </CardContent>
@@ -276,19 +305,20 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" ref={sectionRef} className="py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 bg-card/25 dot-bg relative">
+    <section id="projects" ref={sectionRef} className="py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24 px-2 xs:px-3 sm:px-4 md:px-6 bg-card/25 dot-bg relative">
       <div className="container mx-auto max-w-5xl">
 
         {/* Section Heading */}
-        <div className="projects-heading mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
-            Featured <span className="font-serif italic font-bold text-primary">Projects</span>
-          </h2>
-          <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
+        <div className="projects-heading mb-6 xs:mb-8 sm:mb-12 md:mb-16">
+          <div className="inline-block border-2 border-primary/30 bg-card/80 px-4 py-2">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-sans font-bold tracking-tight text-foreground">
+              Featured <span className="font-sans font-bold text-primary">Projects</span>
+            </h2>
+          </div>
         </div>
 
         {/* Project Grid */}
-        <div className="project-grid grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
+        <div className="project-grid grid grid-cols-1 sm:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}

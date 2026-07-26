@@ -67,22 +67,25 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" ref={containerRef} className="py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 relative overflow-hidden">
+    <section id="about" ref={containerRef} className="py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24 px-2 xs:px-3 sm:px-4 md:px-6 relative overflow-hidden">
       <div className="container mx-auto max-w-5xl">
         {/* Section heading */}
-        <div className="about-heading mb-8 sm:mb-10 md:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
-            Beyond the <span className="font-serif italic font-bold text-primary">Resume</span>
-          </h2>
-          <div className="w-10 sm:w-12 h-0.5 bg-primary/60 mt-3 rounded-full" />
+        <div className="about-heading mb-6 xs:mb-8 sm:mb-10 md:mb-14">
+          <div className="inline-block border-2 border-primary/30 bg-card/80 px-4 py-2">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
+              The <span className="font-serif italic font-bold text-foreground">Real Story</span>
+            </h2>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 sm:gap-8 md:gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 xs:gap-6 sm:gap-8 md:gap-12 items-start">
           {/* Left – bio */}
           <div className="about-bio md:col-span-3 min-w-0 order-2 md:order-1">
-            <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed text-sm sm:text-base">
-              <p className="text-foreground font-serif italic text-base sm:text-lg md:text-xl font-medium">
-                Behind every clean UI is a commit history I'd rather not show you.
+            <div className="space-y-3 xs:space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed text-xs xs:text-sm sm:text-base">
+              <p className="text-foreground font-serif italic text-sm xs:text-base sm:text-lg md:text-xl font-medium">
+                <span className="border-b-2 border-primary/40 pb-1">
+                  Behind every clean UI is a commit history I'd rather not show you.
+                </span>
               </p>
               <p>
                 Hi, I'm Bhavya. What started as curiosity about how websites work
@@ -110,19 +113,19 @@ const About = () => {
           {/* Right – quick facts */}
           <div className="about-facts md:col-span-2 min-w-0 order-1 md:order-2">
             <Card className="rounded-2xl bg-card border border-border/85 shadow-xl">
-              <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-5">
+              <CardContent className="p-3 xs:p-4 sm:p-6 space-y-3 xs:space-y-4 sm:space-y-5">
                 {[
                   { icon: GraduationCap, label: "Studying", value: "ECE, JSSATE Noida" },
                   { icon: MapPin, label: "Based in", value: "Noida, India" },
                   { icon: Code2, label: "Focus", value: "Frontend / React" },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-start gap-3 sm:gap-4 hover-lift magnetic-item">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 border border-primary/25">
-                      <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+                  <div key={item.label} className="flex items-start gap-2.5 xs:gap-3 sm:gap-4 hover-lift magnetic-item">
+                    <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 border border-primary/25">
+                      <item.icon className="w-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 text-primary" />
                     </div>
                     <div>
-                      <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-muted-foreground">{item.label}</p>
-                      <p className="text-xs sm:text-sm md:text-base font-bold text-foreground mt-0.5">{item.value}</p>
+                      <p className="text-[8px] xs:text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-muted-foreground">{item.label}</p>
+                      <p className="text-[10px] xs:text-xs sm:text-sm md:text-base font-bold text-foreground mt-0.5">{item.value}</p>
                     </div>
                   </div>
                 ))}
