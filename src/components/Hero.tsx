@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Github, Linkedin, Mail, ArrowUpRight, Sparkles, FolderGit2 } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, Sparkles, FolderGit2, User, Code, Briefcase, Wrench, Send } from "lucide-react";
 import gsap from "gsap";
 
 const techStack = [
@@ -7,132 +7,21 @@ const techStack = [
   "Next.js", "Node.js", "Git", "HTML5", "CSS3", "Vercel",
 ];
 
-// Helper component for syntax highlighted typing code editor
-const TypewrittenCode = () => {
-  const [typedText, setTypedText] = useState<string>("");
-  const fullText = `const developer = {
-  name: "Bhavya Mishra",
-  role: "Web Developer",
-  skills: {
-    react: true,
-    typescript: true,
-    tailwindcss: true
-  },
-  lovesCoding: true
-};`;
-
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setTypedText(fullText.slice(0, i));
-      i++;
-      if (i > fullText.length) {
-        setTypedText(fullText); // ensure complete code is set at end
-        clearInterval(interval);
-      }
-    }, 25);
-    return () => clearInterval(interval);
-  }, []);
-
+// Bento Card Component
+const BentoCard = ({ icon: Icon, label, onClick }: { icon: any, label: string, onClick?: () => void }) => {
   return (
-    <pre className="font-mono text-xs sm:text-sm leading-relaxed text-zinc-600 p-4 select-none whitespace-pre-wrap overflow-hidden text-left">
-      <code>
-        {/* We format the typing string dynamically with colors */}
-        {typedText.split("\n").map((line, idx) => {
-          // Color formatting logic for visual syntax highlighting
-          if (line.includes("const")) {
-            return (
-              <div key={idx}>
-                <span className="text-[#E26D8A] font-medium">const</span>{" "}
-                <span className="text-zinc-800 font-medium">developer</span> ={" "}
-                <span className="text-zinc-500">{"{"}</span>
-              </div>
-            );
-          }
-          if (line.includes("name:")) {
-            return (
-              <div key={idx}>
-                {"  "}
-                <span className="text-[#E26D8A]/80 font-medium">name</span>:{" "}
-                <span className="text-[#A63A50] font-medium">"Bhavya Mishra"</span>,
-              </div>
-            );
-          }
-          if (line.includes("role:")) {
-            return (
-              <div key={idx}>
-                {"  "}
-                <span className="text-[#E26D8A]/80 font-medium">role</span>:{" "}
-                <span className="text-[#A63A50] font-medium">"Web Developer"</span>,
-              </div>
-            );
-          }
-          if (line.includes("skills:")) {
-            return (
-              <div key={idx}>
-                {"  "}
-                <span className="text-[#E26D8A]/80 font-medium">skills</span>:{" "}
-                <span className="text-zinc-500">{"{"}</span>
-              </div>
-            );
-          }
-          if (line.includes("react:")) {
-            return (
-              <div key={idx}>
-                {"    "}
-                <span className="text-[#E26D8A]/80 font-medium">react</span>:{" "}
-                <span className="text-primary font-semibold">true</span>,
-              </div>
-            );
-          }
-          if (line.includes("typescript:")) {
-            return (
-              <div key={idx}>
-                {"    "}
-                <span className="text-[#E26D8A]/80 font-medium">typescript</span>:{" "}
-                <span className="text-primary font-semibold">true</span>,
-              </div>
-            );
-          }
-          if (line.includes("tailwindcss:")) {
-            return (
-              <div key={idx}>
-                {"    "}
-                <span className="text-[#E26D8A]/80 font-medium">tailwindcss</span>:{" "}
-                <span className="text-primary font-semibold">true</span>
-              </div>
-            );
-          }
-          if (line.includes("  },") || (line.trim() === "}," && idx === 8)) {
-            return (
-              <div key={idx}>
-                {"  "}
-                <span className="text-zinc-500">{"},"}</span>
-              </div>
-            );
-          }
-          if (line.includes("lovesCoding:")) {
-            return (
-              <div key={idx}>
-                {"  "}
-                <span className="text-[#E26D8A]/80 font-medium">lovesCoding</span>:{" "}
-                <span className="text-primary font-semibold">true</span>
-              </div>
-            );
-          }
-          if (line.includes("};")) {
-            return (
-              <div key={idx}>
-                <span className="text-zinc-500">{"};"}</span>
-              </div>
-            );
-          }
-          // Default fall-back rendering during active typing lines
-          return <div key={idx}>{line}</div>;
-        })}
-        <span className="inline-block w-1.5 h-4 ml-0.5 bg-primary animate-pulse" />
-      </code>
-    </pre>
+    <div
+      onClick={onClick}
+      className="group relative flex flex-col items-center justify-center gap-2 p-3 xs:p-4 sm:p-5 rounded-xl border border-primary/20 bg-card/80 backdrop-blur-xl shadow-lg hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 cursor-pointer hover:scale-105 hover:-translate-y-1"
+    >
+      <div className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-300">
+        <Icon className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+      </div>
+      <span className="text-[10px] xs:text-[11px] sm:text-xs font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+        {label}
+      </span>
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+    </div>
   );
 };
 
@@ -279,29 +168,19 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto max-w-7xl px-2 xs:px-3 sm:px-4 md:px-6 flex-grow flex items-center pt-6 xs:pt-8 sm:pt-12 lg:pt-16 pb-3 xs:pb-4 sm:pb-6 lg:pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 xs:gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center w-full">
 
-          {/* LEFT: Floating VS Code Card */}
+          {/* LEFT: Bento Card Grid */}
           <div className="lg:col-span-3 flex justify-center order-2 lg:order-1 pb-6 xs:pb-8 lg:pb-0">
             <div
               ref={leftCardRef}
-              className="relative w-full max-w-[200px] xs:max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[280px] xl:max-w-[320px] rounded-xl border border-primary/20 bg-card/80 backdrop-blur-xl shadow-2xl p-0.5 overflow-hidden group hover:border-primary/40 transition-colors duration-500"
+              className="relative w-full max-w-[200px] xs:max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[280px] xl:max-w-[320px] grid grid-cols-2 gap-2 xs:gap-3 sm:gap-4"
               style={{ transformStyle: "preserve-3d" }}
             >
-              {/* Card glossy lighting highlight */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
-
-              {/* Title bar */}
-              <div className="flex items-center justify-between px-3 xs:px-4 py-2 xs:py-3 border-b border-primary/10 bg-card/50">
-                <div className="flex gap-1.5">
-                  <span className="w-2.5 h-2.5 xs:w-3 xs:h-3 rounded-full bg-[#FF5F56]" />
-                  <span className="w-2.5 h-2.5 xs:w-3 xs:h-3 rounded-full bg-[#FFBD2E]" />
-                  <span className="w-2.5 h-2.5 xs:w-3 xs:h-3 rounded-full bg-[#27C93F]" />
-                </div>
-                <span className="text-[8px] xs:text-[10px] font-mono tracking-wider text-zinc-500 uppercase">developer.js</span>
-                <div className="w-6 xs:w-8" />
-              </div>
-
-              {/* Typed code body */}
-              <TypewrittenCode />
+              <BentoCard icon={User} label="About Me" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} />
+              <BentoCard icon={Github} label="GitHub" onClick={() => window.open('https://github.com/Bhavya1352', '_blank')} />
+              <BentoCard icon={Wrench} label="Skills" onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })} />
+              <BentoCard icon={Code} label="Projects" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} />
+              <BentoCard icon={Briefcase} label="Experience" onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })} />
+              <BentoCard icon={Send} label="Contact" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} />
             </div>
           </div>
 
@@ -339,6 +218,14 @@ const Hero = () => {
                 className="inline-flex items-center justify-center gap-2 px-4 xs:px-5 sm:px-6 py-2 xs:py-2.5 sm:py-3 rounded-full bg-primary text-primary-foreground font-bold text-[10px] xs:text-xs sm:text-sm hover:bg-primary/80 transition-colors shadow-lg shadow-primary/20 magnetic-item w-full sm:w-auto"
               >
                 Get in Touch
+                <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
+              </button>
+
+              <button
+                onClick={() => window.open('https://drive.google.com/file/d/1cELmSSxGXRU6CWj7Yv_gMxjiJYRsJTbX/view?usp=sharing', '_blank')}
+                className="inline-flex items-center justify-center gap-2 px-4 xs:px-5 sm:px-6 py-2 xs:py-2.5 sm:py-3 rounded-full border border-primary/20 hover:border-primary/50 text-foreground font-bold text-[10px] xs:text-xs sm:text-sm transition-colors bg-card/50 backdrop-blur-sm magnetic-item w-full sm:w-auto"
+              >
+                Resume
                 <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
               </button>
 
