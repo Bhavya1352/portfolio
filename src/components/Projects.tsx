@@ -121,12 +121,17 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
       >
         {/* Image container */}
         <div className="relative w-full aspect-video bg-muted overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-            loading="lazy"
-          />
+          <picture>
+            <source srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.avif')} type="image/avif" />
+            <source srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.webp')} type="image/webp" />
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           {project.badge && (
             <div className="absolute top-2 right-2 px-2 py-1 rounded-md bg-primary/90 backdrop-blur-sm text-white text-[8px] xs:text-[9px] sm:text-[10px] font-bold uppercase tracking-wider shadow-lg">
               {project.badge}
@@ -203,11 +208,17 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             {/* Visual Preview column */}
             <div className="md:col-span-5 space-y-4">
               <div className="rounded-xl overflow-hidden border border-border/60 aspect-video bg-muted shadow-sm">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
+                <picture>
+                  <source srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.avif')} type="image/avif" />
+                  <source srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.webp')} type="image/webp" />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
               </div>
               <a
                 href={project.link}

@@ -380,11 +380,17 @@ const Hero = () => {
 
                 {/* Photo container */}
                 <div className="w-full aspect-[3/4] rounded-lg bg-background overflow-hidden mb-2.5 xs:mb-3 sm:mb-4 border border-primary/10">
-                  <img
-                    src="/hero-right.jpeg"
-                    alt="Bhavya Mishra Portrait"
-                    className="w-full h-full object-cover brightness-95 contrast-125 transition-all duration-750"
-                  />
+                  <picture>
+                    <source srcSet="/hero-right.avif" type="image/avif" />
+                    <source srcSet="/hero-right.webp" type="image/webp" />
+                    <img
+                      src="/hero-right.jpeg"
+                      alt="Bhavya Mishra Portrait"
+                      className="w-full h-full object-cover brightness-95 contrast-125 transition-all duration-750"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                 </div>
 
               </div>
