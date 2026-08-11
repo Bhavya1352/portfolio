@@ -17,7 +17,7 @@ const projects = [
     title: "AI Collaborative Code Editor",
     description:
       "Real-time collaborative code editor with AI-powered suggestions, syntax highlighting, and seamless team collaboration features.",
-    link: "#",
+    link: "https://ai-collaborative.vercel.app/",
     tech: ["React.js", "TypeScript", "CSS"],
     image: "/ai-code-editor.png",
     badge: "Most Challenging",
@@ -41,7 +41,7 @@ const projects = [
     title: "AI Travel Planner",
     description:
       "Intelligent travel planning application that uses AI to create personalized itineraries, suggest destinations, and optimize travel routes.",
-    link: "#",
+    link: "https://voyara-ai-planner.vercel.app/",
     tech: ["React.js", "JavaScript", "Tailwind CSS"],
     image: "/ai-travel-planner.png",
     badge: "Favorite ❤️",
