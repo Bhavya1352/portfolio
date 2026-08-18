@@ -70,7 +70,7 @@ const Skills = () => {
   return (
     <section id="skills" ref={containerRef} className="py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24 px-2 xs:px-3 sm:px-4 md:px-6 bg-card/25 dot-bg relative border-b border-border/40">
       <div className="container mx-auto max-w-5xl">
-        
+
         {/* Section Heading */}
         <div className="skills-heading mb-6 xs:mb-8 sm:mb-10 md:mb-14">
           <div className="inline-block border-2 border-primary/30 bg-card/80 px-4 py-2">

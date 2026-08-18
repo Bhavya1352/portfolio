@@ -77,16 +77,17 @@ const About = () => {
             </h2>
           </div>
         </div>
+        {/* Quote – full width, right after heading */}
+        <p className="about-bio text-foreground font-serif italic text-base sm:text-lg md:text-xl lg:text-2xl font-medium leading-snug mb-6 sm:mb-8 md:mb-10">
+          <span className="border-b-2 border-primary/40 pb-1">
+            Behind every clean UI is a commit history I'd rather not show you.
+          </span>
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 xs:gap-6 sm:gap-8 md:gap-12 items-start">
           {/* Left – bio */}
           <div className="about-bio md:col-span-3 min-w-0 order-2 md:order-1">
-            <div className="space-y-3 xs:space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed text-xs xs:text-sm sm:text-base">
-              <p className="text-foreground font-serif italic text-sm xs:text-base sm:text-lg md:text-xl font-medium">
-                <span className="border-b-2 border-primary/40 pb-1">
-                  Behind every clean UI is a commit history I'd rather not show you.
-                </span>
-              </p>
+            <div className="space-y-4 sm:space-y-5 md:space-y-6 text-foreground/75 leading-[1.8] text-sm sm:text-base md:text-lg">
               <p>
                 Hi, I'm Bhavya. What started as curiosity about how websites work
                 slowly turned into something I genuinely enjoy doing every day.

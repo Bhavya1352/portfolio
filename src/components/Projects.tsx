@@ -175,7 +175,6 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
               className="inline-flex items-center gap-1 xs:gap-1.5 text-[10px] xs:text-xs sm:text-sm font-bold text-muted-foreground hover:text-foreground transition-colors"
             >
               Live Site
-              <ExternalLink className="w-3 xs:w-3.5 h-3.5" />
             </a>
           </div>
         </CardContent>
@@ -227,7 +226,6 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                 className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-primary text-primary-foreground font-bold text-xs sm:text-sm hover:bg-primary/80 transition-colors shadow-md"
               >
                 Launch Application
-                <ExternalLink className="w-4 h-4" />
               </a>
             </div>
 

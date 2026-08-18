@@ -107,7 +107,7 @@ const Sandbox = () => {
             <span className="text-2xl mb-2 block">🏆</span>
             <h4 className="text-xs sm:text-sm font-bold text-primary mb-1">IronLabs AI Hackathon</h4>
             <p className="text-[11px] text-muted-foreground">
-              Won 1st place in the GTM Track for developing a cutting-edge artificial intelligence project.
+              Won First Place in the GTM Track for developing a cutting-edge artificial intelligence project.
             </p>
           </div>
 

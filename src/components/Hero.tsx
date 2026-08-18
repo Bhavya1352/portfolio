@@ -1,151 +1,38 @@
-import { useEffect, useRef, useState } from "react";
-import { Github, Linkedin, Mail, ArrowUpRight, Sparkles, FolderGit2, User, Code, Briefcase, Wrench, Send } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 import gsap from "gsap";
-
-const techStack = [
-  "React", "TypeScript", "JavaScript", "Tailwind CSS",
-  "Next.js", "Node.js", "Git", "HTML5", "CSS3", "Vercel",
-];
-
-// Bento Card Component
-const BentoCard = ({ icon: Icon, label, onClick }: { icon: any, label: string, onClick?: () => void }) => {
-  return (
-    <div
-      onClick={onClick}
-      className="group relative flex flex-col items-center justify-center gap-2 p-3 xs:p-4 sm:p-5 rounded-xl border border-primary/20 bg-card/80 backdrop-blur-xl shadow-lg hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 cursor-pointer hover:scale-105 hover:-translate-y-1"
-    >
-      <div className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-300">
-        <Icon className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-      </div>
-      <span className="text-[10px] xs:text-[11px] sm:text-xs font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-        {label}
-      </span>
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-    </div>
-  );
-};
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const leftCardRef = useRef<HTMLDivElement>(null);
-  const centerTextRef = useRef<HTMLDivElement>(null);
-  const rightWrapRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Staggered load entrance timeline
       const tl = gsap.timeline();
 
-      // Initial fade in of the entire section
+      // Fade in container
       tl.fromTo(
         containerRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.8, ease: "power2.out" }
+        { opacity: 1, duration: 0.6, ease: "power2.out" }
       );
 
-      // Animate aurora blobs with a floating effect
+      // Slide in content from left
       tl.fromTo(
-        ".hero-aurora-blob",
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 2, ease: "power3.out", stagger: 0.3 },
-        "-=0.4"
+        contentRef.current,
+        { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+        "-=0.3"
       );
 
-      // Dramatic entrance for hero elements
+      // Gentle entrance for image from right
       tl.fromTo(
-        ".hero-entrance-reveal",
-        { y: 60, opacity: 0, scale: 0.95 },
-        { y: 0, opacity: 1, scale: 1, duration: 1.4, ease: "power4.out", stagger: 0.15 },
-        "-=1.5"
+        imageRef.current,
+        { x: 40, opacity: 0, scale: 0.95 },
+        { x: 0, opacity: 1, scale: 1, duration: 1, ease: "power3.out" },
+        "-=0.5"
       );
-
-      // Left card with 3D rotation entrance
-      tl.fromTo(
-        leftCardRef.current,
-        { scale: 0.5, opacity: 0, rotateY: -45, rotateX: 20, y: 100 },
-        { scale: 1, opacity: 1, rotateY: 0, rotateX: 0, y: 0, duration: 1.8, ease: "elastic.out(1, 0.8)" },
-        "-=1.2"
-      );
-
-      // Right wrap with 3D rotation entrance
-      tl.fromTo(
-        rightWrapRef.current,
-        { scale: 0.5, opacity: 0, rotateY: 45, rotateX: -20, y: 100 },
-        { scale: 1, opacity: 1, rotateY: 0, rotateX: 0, y: 0, duration: 1.8, ease: "elastic.out(1, 0.8)" },
-        "-=1.6"
-      );
-
-      // Animate tech stack marquee
-      tl.fromTo(
-        ".marquee-track",
-        { x: -100, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.2, ease: "power3.out" },
-        "-=1.0"
-      );
-
-      // Continuous floating animation for aurora blobs
-      gsap.to(".hero-aurora-blob", {
-        y: "random(-20, 20)",
-        x: "random(-20, 20)",
-        scale: "random(0.95, 1.05)",
-        duration: "random(3, 5)",
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: {
-          each: 0.5,
-          from: "random"
-        }
-      });
-
-      // 2. Interactive Mouse Parallax (Multi-layered offsets) - Only on desktop
-      const handleMouseMove = (e: MouseEvent) => {
-        // Disable parallax on mobile/tablet for better performance
-        if (window.innerWidth < 1024) return;
-
-        const { clientX, clientY } = e;
-        const xOffset = (clientX / window.innerWidth - 0.5);
-        const yOffset = (clientY / window.innerHeight - 0.5);
-
-        // Left column shifts opposite / distinct weight
-        gsap.to(leftCardRef.current, {
-          x: -xOffset * 40,
-          y: -yOffset * 40,
-          rotateY: -xOffset * 10,
-          rotateX: yOffset * 10,
-          duration: 0.8,
-          ease: "power2.out"
-        });
-
-        // Center column text shifts lightly
-        gsap.to(centerTextRef.current, {
-          x: xOffset * 15,
-          y: yOffset * 15,
-          duration: 0.8,
-          ease: "power2.out"
-        });
-
-        // Right column shifts with normal weight
-        gsap.to(rightWrapRef.current, {
-          x: xOffset * 35,
-          y: yOffset * 35,
-          rotateY: xOffset * 12,
-          rotateX: -yOffset * 12,
-          duration: 0.8,
-          ease: "power2.out"
-        });
-
-        // Background glowing blobs shift with lag
-        gsap.to(".hero-aurora-blob", {
-          x: xOffset * 60,
-          y: yOffset * 60,
-          duration: 1.5,
-          ease: "power1.out"
-        });
-      };
-
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
     }, containerRef);
 
     return () => ctx.revert();
@@ -155,171 +42,86 @@ const Hero = () => {
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-fit md:min-h-screen aurora-bg grid-lines stars-overlay flex flex-col justify-between overflow-visible md:overflow-hidden py-6 xs:py-8 sm:py-12 md:py-16 lg:py-20"
+      className="relative min-h-screen flex items-center justify-center pt-16 xs:pt-18 sm:pt-20 md:pt-24 lg:pt-26 xl:pt-28 pb-8 xs:pb-10 sm:pb-12 md:pb-16 lg:pb-18 xl:pb-20 overflow-hidden"
+      style={{ backgroundColor: '#F5E6E2' }}
     >
-      {/* Cinematic glow blobs */}
-      <div className="hero-aurora-blob absolute top-1/4 left-4 sm:left-10 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] rounded-full bg-primary/20 blur-[100px] sm:blur-[130px] pointer-events-none" />
-      <div className="hero-aurora-blob absolute bottom-10 right-4 sm:right-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full bg-accent/15 blur-[120px] sm:blur-[150px] pointer-events-none" />
+      {/* Warm accent blob in background */}
+      <div className="absolute top-1/4 right-0 w-[300px] xs:w-[350px] sm:w-[400px] md:w-[450px] lg:w-[500px] xl:w-[550px] h-[300px] xs:h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px] bg-primary/10 rounded-full blur-[80px] xs:blur-[90px] sm:blur-[100px] md:blur-[110px] lg:blur-[120px] xl:blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[250px] xs:w-[300px] sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[500px] h-[250px] xs:h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] bg-primary/5 rounded-full blur-[60px] xs:blur-[70px] sm:blur-[80px] md:blur-[90px] lg:blur-[100px] xl:blur-[110px] pointer-events-none" />
 
-      {/* Decorative center spotlight overlay */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-background/40 to-background/80 pointer-events-none" />
+      <div className="container mx-auto max-w-7xl px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+        {/* Large rounded card container */}
+        <div className="relative bg-card/80 backdrop-blur-sm rounded-[1.5rem] xs:rounded-[1.75rem] sm:rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] xl:rounded-[3.5rem] p-4 xs:p-5 sm:p-6 md:p-8 lg:p-12 xl:p-16 border border-border/40 shadow-2xl">
 
-      {/* Main Grid Wrapper */}
-      <div className="container relative z-10 mx-auto max-w-7xl px-2 xs:px-3 sm:px-4 md:px-6 flex-grow flex items-center pt-6 xs:pt-8 sm:pt-12 lg:pt-16 pb-3 xs:pb-4 sm:pb-6 lg:pb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 xs:gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-center">
 
-          {/* LEFT: Bento Card Grid */}
-          <div className="lg:col-span-3 flex justify-center order-2 lg:order-1 pb-6 xs:pb-8 lg:pb-0">
-            <div
-              ref={leftCardRef}
-              className="relative w-full max-w-[200px] xs:max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[280px] xl:max-w-[320px] grid grid-cols-2 gap-2 xs:gap-3 sm:gap-4"
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              <BentoCard icon={User} label="About Me" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} />
-              <BentoCard icon={Github} label="GitHub" onClick={() => window.open('https://github.com/Bhavya1352', '_blank')} />
-              <BentoCard icon={Wrench} label="Skills" onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })} />
-              <BentoCard icon={Code} label="Projects" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} />
-              <BentoCard icon={Briefcase} label="Experience" onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })} />
-              <BentoCard icon={Send} label="Contact" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} />
-            </div>
-          </div>
+            {/* LEFT: Main Content */}
+            <div ref={contentRef} className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 xl:space-y-9">
+              {/* Small label */}
+              <div className="inline-block">
+                <span className="text-[10px] xs:text-[11px] sm:text-xs md:text-sm lg:text-base font-semibold text-primary tracking-widest uppercase">
+                  Frontend Developer
+                </span>
+              </div>
 
-          {/* CENTER: Typography, Description & Buttons */}
-          <div
-            ref={centerTextRef}
-            className="lg:col-span-6 text-center flex flex-col items-center space-y-2 xs:space-y-3 sm:space-y-4 lg:space-y-6 order-1 lg:order-2 px-2 xs:px-3 pb-6 xs:pb-8 lg:pb-0"
-          >
-            {/* Pill Badge */}
-            <div className="hero-entrance-reveal inline-flex items-center gap-1.5 xs:gap-2 px-2.5 xs:px-3 sm:px-4 py-1 xs:py-1.5 rounded-full border border-primary/20 bg-primary/5 shadow-inner">
-              <span className="relative flex h-2 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2.5 bg-primary" />
-              </span>
-              <span className="text-[8px] xs:text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-primary">
-                Open for new opportunities
-              </span>
-            </div>
+              {/* Large headline */}
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium text-foreground leading-[1.1] tracking-tight">
+                Hi, I'm<br />
+                <span className="text-foreground/90">Bhavya Mishra.</span>
+              </h1>
 
-            {/* Huge Serif Name */}
-            <h1 className="hero-entrance-reveal text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-serif font-light tracking-tight text-foreground leading-[0.95]">
-              Bhavya Mishra
-            </h1>
+              {/* Subheadline */}
+              <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl">
+                I make websites, care about the details, and occasionally <span className="whitespace-nowrap">argue with CSS.</span>
+              </p>
 
-
-            {/* Personal philosophy */}
-            <p className="hero-entrance-reveal text-[10px] xs:text-[11px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed max-w-md px-2">
-              I spend way too much time making pixels look perfect and fixing bugs that nobody else notices—but I love every minute of it.
-            </p>
-
-            {/* Buttons Row */}
-            <div className="hero-entrance-reveal flex flex-col sm:flex-row items-center gap-2.5 xs:gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
-              <button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-4 xs:px-5 sm:px-6 py-2 xs:py-2.5 sm:py-3 rounded-full bg-primary text-primary-foreground font-bold text-[10px] xs:text-xs sm:text-sm hover:bg-primary/80 transition-colors shadow-lg shadow-primary/20 magnetic-item w-full sm:w-auto"
-              >
-                Get in Touch
-                <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
-              </button>
-
-              <button
-                onClick={() => window.open('https://drive.google.com/file/d/1cELmSSxGXRU6CWj7Yv_gMxjiJYRsJTbX/view?usp=sharing', '_blank')}
-                className="inline-flex items-center justify-center gap-2 px-4 xs:px-5 sm:px-6 py-2 xs:py-2.5 sm:py-3 rounded-full border border-primary/20 hover:border-primary/50 text-foreground font-bold text-[10px] xs:text-xs sm:text-sm transition-colors bg-card/50 backdrop-blur-sm magnetic-item w-full sm:w-auto"
-              >
-                Resume
-                <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
-              </button>
-
-              <button
-                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-4 xs:px-5 sm:px-6 py-2 xs:py-2.5 sm:py-3 rounded-full border border-primary/20 hover:border-primary/50 text-foreground font-bold text-[10px] xs:text-xs sm:text-sm transition-colors bg-card/50 backdrop-blur-sm magnetic-item w-full sm:w-auto"
-              >
-                Explore My Work
-              </button>
-            </div>
-
-            {/* Social icons */}
-            <div className="hero-entrance-reveal flex items-center gap-2.5 xs:gap-3 sm:gap-4 pt-3 xs:pt-4">
-              {[
-                { icon: Github, href: "https://github.com/Bhavya1352", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com/in/bhavya-mishra-7a3b09324", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:bhavyamishra698@gmail.com", label: "Email" },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target={s.label !== "Email" ? "_blank" : undefined}
-                  rel={s.label !== "Email" ? "noopener noreferrer" : undefined}
-                  className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 rounded-full border border-primary/20 bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all magnetic-item"
-                  aria-label={s.label}
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-3 xs:gap-3 sm:gap-4 md:gap-4 lg:gap-4 xl:gap-5 pt-2 xs:pt-3 sm:pt-4">
+                <button
+                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="inline-flex items-center gap-2 px-4 xs:px-5 sm:px-5 md:px-6 lg:px-6 xl:px-7 py-2 xs:py-2.5 sm:py-3 md:py-3 lg:py-3 xl:py-3.5 bg-primary text-primary-foreground rounded-full font-medium text-[11px] xs:text-xs sm:text-sm md:text-sm lg:text-base hover:bg-primary/90 transition-all hover:-translate-y-0.5"
                 >
-                  <s.icon className="w-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4" />
+                  Projects
+                </button>
+
+                <a
+                  href="https://linkedin.com/in/bhavya-mishra-7a3b09324"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 xs:px-5 sm:px-5 md:px-6 lg:px-6 xl:px-7 py-2 xs:py-2.5 sm:py-3 md:py-3 lg:py-3 xl:py-3.5 border border-border text-foreground rounded-full font-medium text-[11px] xs:text-xs sm:text-sm md:text-sm lg:text-base hover:border-primary/50 hover:text-primary transition-all hover:-translate-y-0.5"
+                >
+                  LinkedIn
+                  <Linkedin className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5" />
                 </a>
-              ))}
+              </div>
             </div>
-          </div>
 
-          {/* RIGHT: Polaroid Image & Floating Experience Card */}
-          <div className="lg:col-span-3 flex flex-col items-center gap-3 xs:gap-4 sm:gap-6 order-3 pb-10 xs:pb-12 lg:pb-0">
-            <div ref={rightWrapRef} className="relative flex flex-col items-center w-full max-w-[180px] xs:max-w-[220px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[240px] xl:max-w-[280px]">
+            {/* RIGHT: Organic image composition */}
+            <div ref={imageRef} className="relative flex justify-center lg:justify-end mt-6 xs:mt-7 sm:mt-8 md:mt-10 lg:mt-0 xl:mt-0">
+              {/* Organic blob shape behind image */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] xs:w-[200px] sm:w-[240px] md:w-[280px] lg:w-[350px] xl:w-[400px] h-[180px] xs:h-[200px] sm:h-[240px] md:h-[280px] lg:h-[350px] xl:h-[400px] bg-primary/20 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] blur-sm" />
 
-              {/* Polaroid Frame */}
-              <div className="relative w-full p-2.5 xs:p-3 sm:p-4 pb-5 xs:pb-6 sm:pb-8 bg-card border border-primary/15 rounded-xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
-
-                {/* Photo container */}
-                <div className="w-full aspect-[3/4] rounded-lg bg-background overflow-hidden mb-2.5 xs:mb-3 sm:mb-4 border border-primary/10">
-                  <picture>
-                    <source srcSet="/hero-right.avif" type="image/avif" />
-                    <source srcSet="/hero-right.webp" type="image/webp" />
-                    <img
-                      src="/hero-right.jpeg"
-                      alt="Bhavya Mishra Portrait"
-                      className="w-full h-full object-cover brightness-95 contrast-125 transition-all duration-750"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </picture>
-                </div>
-
+              {/* Image container with organic mask */}
+              <div className="relative w-[160px] xs:w-[180px] sm:w-[200px] md:w-[240px] lg:w-[300px] xl:w-[340px] h-[220px] xs:h-[250px] sm:h-[280px] md:h-[320px] lg:h-[400px] xl:h-[440px] rounded-[1.5rem] xs:rounded-[1.75rem] sm:rounded-[2rem] md:rounded-[2rem] lg:rounded-[2.5rem] xl:rounded-[3rem] overflow-hidden shadow-2xl">
+                <picture>
+                  <source srcSet="/hero-right.avif" type="image/avif" />
+                  <source srcSet="/hero-right.webp" type="image/webp" />
+                  <img
+                    src="/hero-right.jpeg"
+                    alt="Bhavya Mishra"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </picture>
               </div>
 
-              {/* Floating Experience Card below Polaroid */}
-              <div className="absolute -bottom-6 xs:-bottom-8 sm:-bottom-10 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:-left-6 w-[85%] xs:w-[90%] sm:w-64 p-2.5 xs:p-3 sm:p-4 rounded-xl border border-primary/15 bg-card/90 backdrop-blur-md shadow-2xl flex items-center justify-between gap-2 xs:gap-2.5 sm:gap-3 hover:border-primary/40 transition-colors duration-500 z-20">
-                <div className="flex items-center gap-2 xs:gap-2.5 sm:gap-3.5">
-                  <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                    <FolderGit2 className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-primary" />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="text-[8px] xs:text-[9px] sm:text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Project Admin</h4>
-                    <p className="text-[9px] xs:text-[10px] sm:text-xs font-bold text-foreground mt-0.5">at SSOC & GSSOC</p>
-                  </div>
-                </div>
-                <div className="px-1.5 xs:px-2 py-1 rounded bg-primary/15 border border-primary/25 text-[7px] xs:text-[8px] sm:text-[9px] font-bold text-primary uppercase tracking-wider">
-                  2025
-                </div>
-              </div>
-
+              {/* Decorative accent element */}
+              <div className="absolute -bottom-3 -right-3 xs:-bottom-3.5 xs:-right-3.5 sm:-bottom-4 sm:-right-4 md:-bottom-4 md:-right-4 lg:-bottom-5 lg:-right-5 xl:-bottom-6 xl:-right-6 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 xl:w-24 xl:h-24 bg-primary/30 rounded-full blur-xl" />
             </div>
+
           </div>
-
         </div>
-      </div>
-
-      {/* BOTTOM: Tech Stack Marquee */}
-      <div className="relative border-t border-primary/10 bg-background/60 backdrop-blur-[2px] py-3 xs:py-4 overflow-hidden select-none">
-        <div className="marquee-track">
-          {[...techStack, ...techStack].map((tech, i) => (
-            <span
-              key={i}
-              className="mx-6 xs:mx-8 text-[8px] xs:text-[10px] uppercase font-bold tracking-widest text-muted-foreground flex items-center gap-2 xs:gap-3"
-            >
-              <span className="w-1 h-1.5 xs:w-1.5 xs:h-1.5 rounded-full bg-primary" />
-              {tech}
-            </span>
-          ))}
-        </div>
-        {/* Gradients to blend marquee edges */}
-        <div className="absolute inset-y-0 left-0 w-16 xs:w-24 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-16 xs:w-24 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
       </div>
     </section>
   );

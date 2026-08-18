@@ -4,35 +4,35 @@
 
 @layer base {
   :root {
-    --background: 220 15% 10%;
-    --foreground: 0 0% 92%;
+    --background: 9 30% 97%;
+    --foreground: 9 10% 8%;
 
-    --card: 220 15% 14%;
-    --card-foreground: 0 0% 92%;
+    --card: 9 25% 95%;
+    --card-foreground: 9 10% 8%;
 
-    --popover: 220 15% 14%;
-    --popover-foreground: 0 0% 92%;
+    --popover: 9 25% 95%;
+    --popover-foreground: 9 10% 8%;
 
-    --primary: 35 80% 55%;
+    --primary: 9 80% 35%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 0 0% 92%;
+    --secondary: 9 20% 90%;
+    --secondary-foreground: 9 10% 8%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 9 15% 85%;
+    --muted-foreground: 9 10% 35%;
 
-    --accent: 35 70% 50%;
+    --accent: 9 80% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 25%;
-    --input: 220 15% 25%;
-    --ring: 35 80% 55%;
+    --border: 9 15% 80%;
+    --input: 9 15% 80%;
+    --ring: 9 80% 35%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 }
 
@@ -42,8 +42,8 @@
   }
 
   body {
-    background: #1a1a1a;
-    background: linear-gradient(135deg, #141414 0%, #1a1a1a 50%, #0f0f0f 100%);
+    background: #fdfbfb;
+    background: linear-gradient(135deg, #fdfbfb 0%, #fcf7f6 50%, #fcebe8 100%);
     @apply text-foreground antialiased overflow-x-hidden;
     font-family: 'Inter', system-ui, sans-serif;
   }
@@ -61,18 +61,6 @@
     background-size: 128px 128px;
   }
 
-  @media (min-width: 768px) {
-
-    body,
-    a,
-    button,
-    input,
-    textarea,
-    select,
-    [role="button"] {
-      cursor: none !important;
-    }
-  }
 
   html {
     scroll-behavior: smooth;
@@ -97,9 +85,9 @@
 
 @layer utilities {
   .aurora-bg {
-    background: radial-gradient(circle at 50% 20%, rgba(217, 119, 6, 0.12) 0%, transparent 60%),
-      radial-gradient(circle at 10% 40%, rgba(180, 83, 9, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.06) 0%, transparent 50%),
+    background: radial-gradient(circle at 50% 20%, rgba(230, 56, 26, 0.12) 0%, transparent 60%),
+      radial-gradient(circle at 10% 40%, rgba(163, 40, 18, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(243, 164, 149, 0.06) 0%, transparent 50%),
       linear-gradient(135deg, #141414 0%, #1a1a1a 50%, #0f0f0f 100%);
   }
 
@@ -124,14 +112,14 @@
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #f59e0b 100%);
+    background: linear-gradient(135deg, #EA5C43 0%, #A32812 50%, #F3A495 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .bg-gradient-primary {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #92400e 100%);
+    background: linear-gradient(135deg, #E6381A 0%, #A32812 50%, #6A1A0C 100%);
   }
 
   .bg-gradient-secondary {
@@ -139,7 +127,7 @@
   }
 
   .bg-gradient-accent {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+    background: linear-gradient(135deg, #F3A495 0%, #E6381A 50%, #A32812 100%);
   }
 
   .animate-fade-up {

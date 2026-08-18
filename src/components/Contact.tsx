@@ -110,51 +110,51 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6">
+    <section id="contact" className="py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-2 xs:px-3 sm:px-4 md:px-6">
       <div className="container mx-auto max-w-5xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start w-full">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 xs:gap-7 sm:gap-8 md:gap-10 lg:gap-12 items-start w-full">
+
           {/* Left Column: Heading and Contact Cards */}
           <div
             ref={headingReveal.ref}
-            className={`lg:col-span-5 space-y-6 sm:space-y-8 reveal-left ${
+            className={`lg:col-span-5 space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-8 reveal-left ${
               headingReveal.isVisible ? "visible" : ""
             }`}
           >
             <div>
-              <div className="inline-block border-2 border-primary/30 bg-card/80 px-4 py-2 mb-4">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
+              <div className="inline-block border-2 border-primary/30 bg-card/80 px-3 xs:px-4 sm:px-4 py-1.5 xs:py-2 mb-3 xs:mb-4">
+                <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-foreground">
                   Let's <span className="font-serif italic font-bold text-foreground">Connect</span>
                 </h2>
               </div>
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed font-normal">
+              <p className="text-muted-foreground text-xs xs:text-sm sm:text-base leading-relaxed font-normal">
                 If you prefer narrative paragraphs over boring forms, use this builder. Otherwise, feel free to drop a line directly!
               </p>
             </div>
 
             {/* Contact Details stack */}
-            <div className="space-y-3.5 sm:space-y-4">
+            <div className="space-y-3 xs:space-y-3.5 sm:space-y-4">
               {contactItems.map((item) => (
                 <div
                   key={item.label}
-                  className="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl bg-card border border-border/60 hover:border-primary/30 transition-all shadow-sm hover-lift magnetic-item"
+                  className="flex items-center gap-2.5 xs:gap-3 sm:gap-4 p-3 xs:p-3.5 sm:p-4 rounded-xl bg-card border border-border/60 hover:border-primary/30 transition-all shadow-sm hover-lift magnetic-item"
                 >
-                  <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg ${item.bg} flex items-center justify-center flex-shrink-0`}>
-                    <item.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${item.accent}`} />
+                  <div className={`w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg ${item.bg} flex items-center justify-center flex-shrink-0`}>
+                    <item.icon className={`w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 ${item.accent}`} />
                   </div>
                   <div>
-                    <p className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground font-bold">{item.label}</p>
+                    <p className="text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground font-bold">{item.label}</p>
                     {item.href ? (
                       <a
                         href={item.href}
                         target={item.external ? "_blank" : undefined}
                         rel={item.external ? "noopener noreferrer" : undefined}
-                        className="text-xs sm:text-sm font-semibold text-foreground hover:text-primary transition-colors block mt-0.5 whitespace-nowrap"
+                        className="text-xs xs:text-xs sm:text-sm font-semibold text-foreground hover:text-primary transition-colors block mt-0.5 whitespace-nowrap"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <p className="text-xs sm:text-sm font-semibold text-foreground mt-0.5">{item.value}</p>
+                      <p className="text-xs xs:text-xs sm:text-sm font-semibold text-foreground mt-0.5">{item.value}</p>
                     )}
                   </div>
                 </div>
@@ -167,15 +167,15 @@ const Contact = () => {
             ref={formReveal.ref}
             className={`lg:col-span-7 reveal-right ${formReveal.isVisible ? "visible" : ""}`}
           >
-            <Card className="rounded-2xl bg-card border border-border/80 shadow-xl overflow-hidden p-6 sm:p-8 md:p-10">
+            <Card className="rounded-2xl bg-card border border-border/80 shadow-xl overflow-hidden p-4 xs:p-5 sm:p-6 md:p-8 lg:p-10">
               <CardContent className="p-0">
-                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8 text-left">
+                <form onSubmit={handleSubmit} className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-8 text-left">
                   {/* Narrative Sentence */}
                   <div>
-                    <p className="text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground/70 mb-4 font-bold select-none">
+                    <p className="text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground/70 mb-3 xs:mb-4 font-bold select-none">
                       (Fill in the shaded blanks to write a message)
                     </p>
-                    <div className="leading-[2.2] sm:leading-[2.6] md:leading-[3] text-base sm:text-lg md:text-xl text-foreground/80 font-serif font-light">
+                    <div className="leading-[2] xs:leading-[2.2] sm:leading-[2.6] md:leading-[3] text-sm xs:text-base sm:text-lg md:text-xl text-foreground/80 font-serif font-light">
                       Hello Bhavya, my name is{" "}
                       <input
                         type="text"
@@ -185,7 +185,7 @@ const Contact = () => {
                         placeholder="your name"
                         required
                         disabled={isSubmitting}
-                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[8rem] sm:max-w-[11rem] font-serif italic"
+                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[6rem] xs:max-w-[8rem] sm:max-w-[11rem] font-serif italic"
                       />
                       , and I am interested in collaborating with you on a{" "}
                       <input
@@ -196,7 +196,7 @@ const Contact = () => {
                         placeholder="web development"
                         required
                         disabled={isSubmitting}
-                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[10rem] sm:max-w-[13rem] font-serif italic"
+                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[8rem] xs:max-w-[10rem] sm:max-w-[13rem] font-serif italic"
                       />{" "}
                       project. You can reach out to me at my email address{" "}
                       <input
@@ -207,7 +207,7 @@ const Contact = () => {
                         placeholder="your email address"
                         required
                         disabled={isSubmitting}
-                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[11rem] sm:max-w-[15rem] font-serif italic"
+                        className="bg-primary/5 hover:bg-primary/10 focus:bg-primary/10 border-b-2 border-dashed border-primary/40 focus:border-solid focus:border-primary outline-none px-2 py-0.5 rounded-md text-foreground placeholder:text-muted-foreground/50 transition-all w-full max-w-[9rem] xs:max-w-[11rem] sm:max-w-[15rem] font-serif italic"
                       />
                       . Here is a brief detail of what I am thinking:{" "}
                       <textarea
@@ -226,16 +226,16 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3.5 sm:py-4 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 mt-4 text-xs sm:text-sm uppercase tracking-widest"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 xs:py-3.5 sm:py-4 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 mt-4 text-[10px] xs:text-xs sm:text-sm uppercase tracking-widest"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <Loader2 className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-4 sm:h-4 animate-spin" />
                         Sending Message...
                       </>
                     ) : (
                       <>
-                        <Send className="w-4 h-4" />
+                        <Send className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-4 sm:h-4" />
                         Send Inquiry
                       </>
                     )}
