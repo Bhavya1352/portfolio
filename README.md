@@ -1,10 +1,10 @@
 # 🌐 My Portfolio Website
 
-Welcome to my **personal portfolio website**! This project highlights my skills, projects, and experience in web development and design. 💻✨
+Welcome to my **personal portfolio website**! This project highlights my skills, projects, and experience in web development and design. 
 
 ---
 
-## 🚀 Features
+##  Features
 
 - 🎨 Modern and responsive design  
 - 🛠 Showcase of projects with live demos and GitHub links  
