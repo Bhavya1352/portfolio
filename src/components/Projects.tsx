@@ -19,7 +19,7 @@ const projects = [
       "Real-time collaborative code editor with AI-powered suggestions, syntax highlighting, and seamless team collaboration features.",
     link: "https://ai-collaborative.vercel.app/",
     tech: ["React.js", "Tailwind CSS", "Monaco Editor", "Gemini API"],
-    image: "/ai-code-editor.png",
+    image: "/ai-code-editor.webp",
     badge: "Most Challenging",
     caseStudy: {
       problem: "Development teams often struggle with real-time collaboration and code consistency across different environments, leading to merge conflicts and reduced productivity.",
@@ -43,7 +43,7 @@ const projects = [
       "Intelligent travel planning application that uses AI to create personalized itineraries, suggest destinations, and optimize travel routes.",
     link: "https://voyara-ai-planner.vercel.app/",
     tech: ["React.js", "Tailwind CSS", "Claude API"],
-    image: "/ai-travel-planner.png",
+    image: "/ai-travel-planner.webp",
     badge: "Favorite ❤️",
     caseStudy: {
       problem: "Travel planning is often time-consuming and overwhelming, with users struggling to find optimal routes, accommodations, and activities that match their preferences.",
@@ -122,7 +122,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
         {/* Image container */}
         <div className="relative w-full aspect-video bg-muted overflow-hidden">
           <picture>
-            <source srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.avif')} type="image/avif" />
+            <source srcSet={project.image.replace(/\.(png|jpg|jpeg|webp)$/, '.avif')} type="image/avif" />
             <source srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.webp')} type="image/webp" />
             <img
               src={project.image}
@@ -130,6 +130,8 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               loading="lazy"
               decoding="async"
+              width="640"
+              height="360"
             />
           </picture>
           {project.badge && (

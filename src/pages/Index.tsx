@@ -15,23 +15,6 @@ const Index = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Page load animation - fade in all sections
-      gsap.fromTo(
-        "section",
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power2.out",
-          delay: 0.2,
-        }
-      );
-
       // Header slide down animation
       gsap.fromTo(
         "header",
@@ -60,7 +43,7 @@ const Index = () => {
           y: 0,
           duration: 0.6,
           ease: "power2.out",
-          delay: 1,
+          delay: 0.8,
         }
       );
     }, containerRef);

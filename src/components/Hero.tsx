@@ -112,6 +112,8 @@ const Hero = () => {
                     className="w-full h-full object-cover"
                     loading="eager"
                     decoding="async"
+                    width="340"
+                    height="440"
                   />
                 </picture>
               </div>
