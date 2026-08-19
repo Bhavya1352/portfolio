@@ -7,7 +7,7 @@ const experiences = [
     num: "01",
     title: "Frontend Developer",
     organization: "Naya Growth",
-    period: "May 2026 – Present",
+    period: "May 2026 – July 2026",
     bullets: [
       "Delivered UI improvements and new frontend features across multiple client projects using React.js and JavaScript.",
       "Worked directly with clients to scope requirements, translating feedback into functional interface changes.",
