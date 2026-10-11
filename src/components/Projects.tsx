@@ -14,6 +14,30 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const projects = [
   {
+    title: "AutoSphere",
+    description:
+      "Frontend-first automotive service platform for managing vehicles, service bookings, vehicle health, and workshop operations.",
+    link: "https://autosphere.vercel.app/",
+    tech: ["React.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    image: "/autosphere.webp",
+    badge: "Featured",
+    caseStudy: {
+      problem: "Vehicle owners and workshops juggle service history, bookings, and health checks across phone calls, paper slips, and spreadsheets, so nobody has a single reliable view of a vehicle.",
+      solution: "I built AutoSphere as a frontend-first automotive service platform that brings vehicle records, service bookings, health monitoring, and workshop operations into one responsive dashboard.",
+      features: [
+        "Vehicle garage with per-vehicle profiles and full service history.",
+        "Service booking flow with slot selection and status tracking.",
+        "Vehicle health dashboard surfacing upcoming maintenance and alerts.",
+        "Workshop operations view for managing jobs and customer requests."
+      ],
+      learnings: [
+        "Learned to model complex domain data cleanly on the frontend with TypeScript.",
+        "Used Framer Motion for purposeful motion that guides attention instead of distracting.",
+        "Improved component architecture for dashboards with many interdependent views."
+      ]
+    }
+  },
+  {
     title: "AI Collaborative Code Editor",
     description:
       "Real-time collaborative code editor with AI-powered suggestions, syntax highlighting, and seamless team collaboration features.",
@@ -58,30 +82,6 @@ const projects = [
         "Gained experience with API integration for travel data.",
         "Learned optimization algorithms for route planning.",
         "Improved UX design for complex decision-making interfaces."
-      ]
-    }
-  },
-  {
-    title: "Event Maker",
-    description:
-      "Platform for creating and managing events with customizable pages, attendee tracking, and payment integration.",
-    link: "https://event-site-beta.vercel.app/",
-    tech: ["React.js", "TypeScript", "Tailwind CSS"],
-    image: "/event-maker.webp",
-    badge: "Featured",
-    caseStudy: {
-      problem: "Event organizers often struggle to find simple systems to create custom landing pages and register guests without high platform fees.",
-      solution: "I built Event Maker to serve as a self-hosted alternative. It provides clean templates, simple guest registration, and dashboard overview metrics.",
-      features: [
-        "Custom event generation with landing page templates.",
-        "Guest list management and database attendee registration.",
-        "Comprehensive dashboard displaying RSVPs and event metrics.",
-        "Secure backend REST API with structured MongoDB collections."
-      ],
-      learnings: [
-        "Learned full-stack development with MongoDB integration.",
-        "Understood authentication and authorization patterns.",
-        "Improved database schema design for scalability."
       ]
     }
   },
